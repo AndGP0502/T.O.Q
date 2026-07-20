@@ -2,7 +2,7 @@
 
 Sitio web oficial de **T.O.Q**, desarrolladora de software. Landing + páginas internas + tienda con checkout (interfaz de pago lista, pasarelas pendientes de integrar).
 
-**Fundadores:** André Garzón (CEO) · Dennys Chanchicocha (Co-fundador)
+**Fundadores:** André Garzón (CEO fundador) · Dennys Chanchicocha (COO Co-fundador)
 
 ---
 
