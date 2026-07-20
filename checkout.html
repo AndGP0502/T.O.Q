@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — T.O.Q | Finalizar compra</title>
+  <meta name="description" content="Finaliza tu compra de software T.O.Q eligiendo tu método de pago preferido.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">T<span class="dot">.</span>O<span class="dot">.</span>Q <small>Transforma o Quiebra</small></a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#servicios">Servicios</a></li>
+      <li><a href="index.html#portafolio">Portafolio</a></li>
+      <li><a href="tienda.html">Tienda</a></li>
+      <li><a href="sobre-nosotros.html">Nosotros</a></li>
+      <li><a href="index.html#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">// Checkout</span>
+      <h1>Finalizar compra</h1>
+      <p>Revisa tu pedido, elige un método de pago y confirma. Nuestro equipo te acompaña en cada paso.</p>
+    </div>
+  </section>
+
+  <div class="checkout-layout container">
+
+    <!-- ===== Flujo principal de checkout ===== -->
+    <div id="checkout-main">
+
+      <!-- Resumen de la compra -->
+      <div class="order-summary reveal visible">
+        <h2>Resumen de tu compra</h2>
+        <div class="order-row">
+          <div>
+            <div class="o-name" id="order-name">Gym System Medicore</div>
+            <div class="o-desc" id="order-desc">Software de gestión integral para gimnasios</div>
+          </div>
+          <div id="order-price">$499 USD</div>
+        </div>
+        <div class="order-row total">
+          <span>Total</span>
+          <span id="order-total">$499 USD</span>
+        </div>
+      </div>
+
+      <p class="secure-note"><span class="lock">🔒</span> Pagos procesados de forma segura</p>
+
+      <!-- Carrusel de métodos de pago -->
+      <div class="section-head" style="margin-bottom: 20px;">
+        <h2 style="font-size: 1.2rem;">Elige tu método de pago</h2>
+        <p class="section-sub" style="font-size: 0.9rem;">Desliza para ver todas las opciones y haz clic en una para continuar.</p>
+      </div>
+
+      <div class="pay-carousel-wrap">
+        <button class="carousel-arrow prev" id="carousel-prev" aria-label="Anterior">‹</button>
+        <div class="pay-carousel" id="pay-carousel">
+
+          <div class="pay-card" data-method="card" role="button" tabindex="0">
+            <div class="pay-icon">💳</div>
+            <div class="pay-name">Tarjeta</div>
+            <div class="pay-sub">Visa · Mastercard · crédito/débito</div>
+          </div>
+
+          <div class="pay-card" data-method="paypal" role="button" tabindex="0">
+            <div class="pay-icon">🅿️</div>
+            <div class="pay-name">PayPal</div>
+            <div class="pay-sub">Pago con tu cuenta PayPal</div>
+          </div>
+
+          <div class="pay-card" data-method="payphone" role="button" tabindex="0">
+            <div class="pay-icon">📲</div>
+            <div class="pay-name">Payphone</div>
+            <div class="pay-sub">Pago con app Payphone</div>
+          </div>
+
+          <div class="pay-card" data-method="transfer" role="button" tabindex="0">
+            <div class="pay-icon">🏦</div>
+            <div class="pay-name">Transferencia</div>
+            <div class="pay-sub">Transferencia bancaria local</div>
+          </div>
+
+          <div class="pay-card" data-method="wallet" role="button" tabindex="0">
+            <div class="pay-icon">📱</div>
+            <div class="pay-name">Billetera digital</div>
+            <div class="pay-sub">[Pago móvil del país — editable]</div>
+          </div>
+
+          <div class="pay-card disabled" data-method="crypto" role="button" aria-disabled="true">
+            <div class="pay-icon">₿</div>
+            <div class="pay-name">Criptomonedas</div>
+            <div class="pay-sub">Próximamente</div>
+          </div>
+
+        </div>
+        <button class="carousel-arrow next" id="carousel-next" aria-label="Siguiente">›</button>
+      </div>
+
+      <!-- ===== Paneles por método ===== -->
+
+      <!-- Tarjeta: maqueta de UI. La tokenización/procesamiento real es de la pasarela. -->
+      <div class="pay-panel" id="panel-card">
+        <h3>💳 Pago con tarjeta de crédito/débito</h3>
+        <!-- TODO: integrar API key real de Stripe aquí (Stripe Elements reemplaza este formulario).
+             Este formulario es solo interfaz: no captura ni envía datos reales. -->
+        <form id="card-form">
+          <div class="form-group">
+            <label for="card-name">Nombre en la tarjeta</label>
+            <input class="form-control" type="text" id="card-name" autocomplete="off" placeholder="Como aparece en la tarjeta" required>
+          </div>
+          <div class="form-group">
+            <label for="card-number">Número de tarjeta</label>
+            <input class="form-control" type="text" id="card-number" inputmode="numeric" autocomplete="off" placeholder="•••• •••• •••• ••••" maxlength="19" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card-exp">Vencimiento</label>
+              <input class="form-control" type="text" id="card-exp" autocomplete="off" placeholder="MM/AA" maxlength="5" required>
+            </div>
+            <div class="form-group">
+              <label for="card-cvv">CVV</label>
+              <input class="form-control" type="password" id="card-cvv" autocomplete="off" placeholder="•••" maxlength="4" required>
+            </div>
+          </div>
+          <p class="instructions" style="margin-bottom: 16px;">Al conectar la pasarela real, este paso se procesará de forma segura por el proveedor certificado (PCI-DSS). Ningún dato de tarjeta se guarda en este sitio.</p>
+          <button type="submit" class="btn btn-primary btn-block">Pagar con tarjeta</button>
+        </form>
+      </div>
+
+      <div class="pay-panel" id="panel-paypal">
+        <h3>🅿️ Pago con PayPal</h3>
+        <p class="instructions">Serás redirigido a PayPal para completar el pago de forma segura con tu cuenta.</p>
+        <!-- TODO: integrar PayPal aquí (SDK oficial de PayPal Buttons con client-id real del comercio). -->
+        <button class="btn btn-primary btn-block" style="margin-top: 18px;" data-gateway-pending>Continuar con PayPal</button>
+      </div>
+
+      <div class="pay-panel" id="panel-payphone">
+        <h3>📲 Pago con Payphone</h3>
+        <p class="instructions">Paga desde tu celular con la app Payphone: recibirás una solicitud de cobro al confirmar.</p>
+        <!-- TODO: integrar Payphone aquí (Cajita de Pagos / API con token real del comercio). -->
+        <button class="btn btn-primary btn-block" style="margin-top: 18px;" data-gateway-pending>Continuar con Payphone</button>
+      </div>
+
+      <div class="pay-panel" id="panel-transfer">
+        <h3>🏦 Transferencia bancaria local</h3>
+        <p class="instructions">Realiza la transferencia a la siguiente cuenta y envíanos el comprobante por WhatsApp o correo. <strong>Tu licencia se activa al confirmar el pago.</strong></p>
+        <div class="bank-details">
+          <!-- Placeholders: reemplazar con los datos bancarios reales de T.O.Q -->
+          <span>Banco: [Nombre del banco]</span>
+          <span>Tipo de cuenta: [Ahorros / Corriente]</span>
+          <span>Nº de cuenta: [0000000000]</span>
+          <span>Titular: [T.O.Q / André Garzón]</span>
+          <span>Identificación: [RUC / CI]</span>
+          <span>Correo para comprobantes: [correo@toq.dev]</span>
+        </div>
+      </div>
+
+      <div class="pay-panel" id="panel-wallet">
+        <h3>📱 Pago móvil / billetera digital</h3>
+        <p class="instructions">Aceptamos pagos por billetera digital local. <strong>[Editable: indicar aquí la billetera disponible en el país — ej. De Una, Deuna, Yape, Nequi — con número o QR.]</strong></p>
+        <div class="bank-details">
+          <span>Billetera: [Nombre de la billetera]</span>
+          <span>Número asociado: [+000000000]</span>
+          <span>Titular: [T.O.Q]</span>
+        </div>
+      </div>
+
+      <!-- Confirmar -->
+      <p class="form-error" id="select-method-hint" style="text-align:center; margin-bottom: 12px;">Selecciona un método de pago para continuar.</p>
+      <button class="btn btn-primary btn-block" id="confirm-purchase" style="font-size: 1.05rem; padding: 16px;">Confirmar compra</button>
+      <p class="secure-note" style="margin-top: 18px;"><span class="lock">🔒</span> Pagos procesados de forma segura · Sin cargos ocultos</p>
+    </div>
+
+    <!-- ===== Pantalla de confirmación (sin pasarela real conectada) ===== -->
+    <div class="confirmation" id="confirmation">
+      <div class="check">✓</div>
+      <h2>Solicitud recibida</h2>
+      <p><strong id="conf-product" style="color: var(--text);"></strong></p>
+      <p>Nuestro equipo se pondrá en contacto contigo en las próximas horas para completar el pago y coordinar la entrega e instalación de tu software.</p>
+      <a href="index.html" class="btn btn-ghost">Volver al inicio</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand">T<span class="dot">.</span>O<span class="dot">.</span>Q</a>
+        <p style="margin-top:14px;">Desarrollo de software personalizado para individuos y empresas. Transforma o Quiebra.</p>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+          <li><a href="mision-vision.html">Misión y Visión</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terminos-condiciones.html">Términos y condiciones</a></li>
+          <li><a href="politica-privacidad.html">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> T.O.Q — Transforma O Quiebra. Todos los derechos reservados.</span>
+      <span>Hecho con código, no con plantillas.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>
