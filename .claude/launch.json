@@ -1,11 +1,6 @@
 {
   "version": "0.0.1",
   "configurations": [
-    {
-      "name": "toq-web",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8742", "--bind", "127.0.0.1"],
-      "port": 8742
-    }
+    { "name": "toq-web", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "8755", "--bind", "127.0.0.1"], "port": 8755 }
   ]
 }
