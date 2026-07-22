@@ -139,40 +139,29 @@
 
       <div class="pay-panel" id="panel-paypal">
         <h3>🅿️ Pago con PayPal</h3>
-        <p class="instructions">Serás redirigido a PayPal para completar el pago de forma segura con tu cuenta.</p>
+        <p class="instructions">Te pondremos en contacto con los desarrolladores para completar el pago a través de PayPal.</p>
         <!-- TODO: integrar PayPal aquí (SDK oficial de PayPal Buttons con client-id real del comercio). -->
         <button class="btn btn-primary btn-block" style="margin-top: 18px;" data-gateway-pending>Continuar con PayPal</button>
       </div>
 
       <div class="pay-panel" id="panel-payphone">
         <h3>📲 Pago con Payphone</h3>
-        <p class="instructions">Paga desde tu celular con la app Payphone: recibirás una solicitud de cobro al confirmar.</p>
+        <p class="instructions">Te pondremos en contacto con los desarrolladores para recibir una solicitud de cobro al confirmar.</p>
         <!-- TODO: integrar Payphone aquí (Cajita de Pagos / API con token real del comercio). -->
-        <button class="btn btn-primary btn-block" style="margin-top: 18px;" data-gateway-pending>Continuar con Payphone</button>
+          <a class="channel" href="https://wa.me/593983760090" target="_blank" rel="noopener">
+            <span>WhatsApp<small>[+593 983760090]</small></span>
+          </a>
       </div>
 
       <div class="pay-panel" id="panel-transfer">
         <h3>🏦 Transferencia bancaria local</h3>
-        <p class="instructions">Realiza la transferencia a la siguiente cuenta y envíanos el comprobante por WhatsApp o correo. <strong>Tu licencia se activa al confirmar el pago.</strong></p>
+        <p class="instructions">Te pondremos en contacto con nuestros desarrolladores para proporcionarte los datos de transferencia. 
+          <strong>Tu licencia se activa al confirmar el pago.</strong></p>
         <div class="bank-details">
           <!-- Placeholders: reemplazar con los datos bancarios reales de T.O.Q -->
-          <span>Banco: [Nombre del banco]</span>
-          <span>Tipo de cuenta: [Ahorros / Corriente]</span>
-          <span>Nº de cuenta: [0000000000]</span>
-          <span>Titular: [T.O.Q / André Garzón]</span>
-          <span>Identificación: [RUC / CI]</span>
-          <span>Correo para comprobantes: [correo@toq.dev]</span>
-        </div>
-      </div>
-
-      <div class="pay-panel" id="panel-wallet">
-        <h3>📱 Pago móvil / billetera digital</h3>
-        <p class="instructions">Aceptamos pagos por billetera digital local. <strong>[Editable: indicar aquí la billetera disponible en el país — ej. De Una, Deuna, Yape, Nequi — con número o QR.]</strong></p>
-        <div class="bank-details">
-          <span>Billetera: [Nombre de la billetera]</span>
-          <span>Número asociado: [+000000000]</span>
-          <span>Titular: [T.O.Q]</span>
-        </div>
+          <a class="channel" href="https://wa.me/593983760090" target="_blank" rel="noopener">
+            <span>WhatsApp<small>[+593 983760090]</small></span>
+          </a>
       </div>
 
       <!-- Confirmar -->
@@ -187,6 +176,7 @@
       <h2>Solicitud recibida</h2>
       <p><strong id="conf-product" style="color: var(--text);"></strong></p>
       <p>Nuestro equipo se pondrá en contacto contigo en las próximas horas para completar el pago y coordinar la entrega e instalación de tu software.</p>
+      <a href="#" id="conf-whatsapp" class="btn btn-primary" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
       <a href="index.html" class="btn btn-ghost">Volver al inicio</a>
     </div>
 

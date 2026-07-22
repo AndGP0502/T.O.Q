@@ -272,6 +272,19 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
   border-radius: var(--radius);
   margin-bottom: 24px;
 }
+
+/* Capturas de vista previa de cada producto */
+.product-preview {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 26px;
+  background: var(--bg-soft);
+}
+.product-feature .product-preview { margin-bottom: 0; aspect-ratio: 16 / 11; }
 .product-feature .product-logo { width: 64px; height: 64px; margin-bottom: 22px; }
 
 .founder-photo {

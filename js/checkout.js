@@ -5,33 +5,46 @@
 (function () {
   "use strict";
 
+  /* ---------- Configuración (editable) ---------- */
+  var WHATSAPP = "593983760090";
+
   /* ---------- Catálogo (editable) ---------- */
   var PRODUCTS = {
-    medicore: {
-      name: "Gym System Medicore",
-      desc: "Software de gestión integral para gimnasios",
-      price: 499,
-      currency: "USD"
+    prosperly: {
+      name: "Prosperly",
+      desc: "Prospección y scraping de leads para Latinoamérica",
+      label: "$0 - $115/mes USD · suscripción"
     },
     "medicore-clinicas": {
       name: "Medicore",
       desc: "Administración para clínicas pequeñas y medianas",
-      price: 899,
-      currency: "USD"
+      label: "$25 - $55/mes USD · suscripción"
     },
-    prosperly: {
-      name: "Prosperly",
-      desc: "Prospección y scraping de leads para Latinoamérica",
-      price: 299,
-      currency: "USD"
+    "gym-system": {
+      name: "Gym System",
+      desc: "Software de gestión integral para gimnasios",
+      label: "$150 - $300 USD · pago único"
+    },
+    "portales-web": {
+      name: "Portales Web",
+      desc: "Portal web completo tipo tienda digital, listo para operar",
+      label: "[PRECIO A DEFINIR]"
     },
     "software-medida": {
       name: "Software a medida",
       desc: "Proyecto personalizado — precio final según cotización",
-      price: 0,
-      currency: "USD",
-      quote: true
+      label: "A cotizar"
     }
+  };
+  PRODUCTS.medicore = PRODUCTS["gym-system"]; // alias de enlaces antiguos
+
+  var METHOD_NAMES = {
+    card: "Tarjeta de crédito/débito",
+    paypal: "PayPal",
+    payphone: "Payphone",
+    transfer: "Transferencia bancaria",
+    wallet: "Billetera digital",
+    crypto: "Criptomonedas"
   };
 
   /* ---------- Resumen de compra según ?producto= ---------- */
@@ -47,9 +60,7 @@
   var priceEl = document.getElementById("order-price");
   var totalEl = document.getElementById("order-total");
 
-  var priceLabel = product.quote
-    ? "A cotizar"
-    : "$" + product.price + " " + product.currency;
+  var priceLabel = product.label;
 
   if (nameEl) nameEl.textContent = product.name;
   if (descEl) descEl.textContent = product.desc;
@@ -136,7 +147,32 @@
     });
   }
 
+  /* ---------- Aviso por WhatsApp al equipo T.O.Q ----------
+     Abre WhatsApp con el pedido prellenado (producto, precio y método elegido).
+     El cliente solo pulsa "enviar". Un envío 100% automático sin intervención
+     requiere backend con WhatsApp Business API.
+     TODO: si se integra WhatsApp Business API, llamar aquí al endpoint propio. */
+  function metodoSeleccionado() {
+    var sel = document.querySelector(".pay-card.selected");
+    var key = sel ? sel.getAttribute("data-method") : null;
+    return METHOD_NAMES[key] || "No especificado";
+  }
+
+  function mensajePedido() {
+    var msg =
+      "Hola T.O.Q, quiero completar una compra.\n\n" +
+      "Producto: " + product.name + "\n" +
+      "Precio: " + priceLabel + "\n" +
+      "Método de pago: " + metodoSeleccionado() + "\n\n" +
+      "Quedo atento para finalizar el pago.";
+    return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+  }
+
   function confirmOrder() {
+    var url = mensajePedido();
+    window.open(url, "_blank", "noopener");
+    var waBtn = document.getElementById("conf-whatsapp");
+    if (waBtn) waBtn.href = url; // respaldo si el navegador bloquea la ventana
     // Sin pasarela real conectada: se registra la solicitud y el equipo
     // de T.O.Q contacta al cliente para completar el pago.
     document.getElementById("checkout-main").style.display = "none";
