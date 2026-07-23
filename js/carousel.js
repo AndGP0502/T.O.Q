@@ -14,6 +14,11 @@
    para la primera diapositiva. La extensión se detecta probando en orden
    png → jpeg → jpg → webp; se usa la primera que cargue.
 
+   data-images (opcional): lista separada por comas de archivos (con
+   extensión) dentro de data-dir, en el orden exacto de las diapositivas.
+   Tiene prioridad sobre data-preview y la convención numérica; las
+   diapositivas sin archivo en la lista quedan como placeholder.
+
    Mientras un archivo no exista, la diapositiva muestra un placeholder
    ("Screenshot próximamente"). Al subir la imagen real a esa ruta, se
    muestra automáticamente sin tocar código. */
@@ -64,7 +69,9 @@
       if (k < sources.length) img.src = sources[k];
       else slide.classList.remove("has-img");
     });
-    img.src = sources[0];
+    /* Sin candidatas (p. ej. diapositiva reservada como placeholder en
+       data-images) no se pide nada: el placeholder queda visible. */
+    if (sources.length) img.src = sources[0];
     slide.appendChild(img);
 
     return slide;
@@ -134,6 +141,10 @@
     var count = parseInt(root.getAttribute("data-count"), 10) || 3;
     var ext = root.getAttribute("data-ext") || "webp";
     var preview = root.getAttribute("data-preview") || "";
+    var images = (root.getAttribute("data-images") || "")
+      .split(",")
+      .map(function (s) { return s.trim(); })
+      .filter(Boolean);
 
     root.setAttribute("role", "region");
     root.setAttribute("aria-roledescription", "carrusel");
@@ -142,10 +153,16 @@
     var track = document.createElement("div");
     track.className = "pc-track";
     for (var i = 1; i <= count; i++) {
-      var sources =
-        i === 1 && preview
-          ? IMG_EXTS.map(function (e) { return dir + "/" + preview + "." + e; })
-          : [dir + "/" + i + "." + ext];
+      var sources;
+      if (images.length) {
+        /* Lista explícita: la diapositiva i usa images[i-1]; sin entrada,
+           queda como placeholder */
+        sources = i <= images.length ? [dir + "/" + images[i - 1]] : [];
+      } else if (i === 1 && preview) {
+        sources = IMG_EXTS.map(function (e) { return dir + "/" + preview + "." + e; });
+      } else {
+        sources = [dir + "/" + i + "." + ext];
+      }
       track.appendChild(buildSlide(sources, name, i, count));
     }
     root.appendChild(track);
