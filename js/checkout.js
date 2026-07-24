@@ -13,7 +13,7 @@
     prosperly: {
       name: "Prosperly",
       desc: "Prospección y scraping de leads para Latinoamérica",
-      label: "$0 - $115/mes USD · suscripción"
+      label: "$0 - $55/mes USD · suscripción"
     },
     "medicore-clinicas": {
       name: "Medicore",
