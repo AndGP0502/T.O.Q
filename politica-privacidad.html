@@ -2,112 +2,150 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Política de Privacidad — T.O.Q</title>
-  <meta name="description" content="Política de privacidad de T.O.Q: cómo tratamos los datos de formularios y pagos.">
+  <meta name="description" content="Cómo T.O.Q recopila, usa y protege los datos personales de sus usuarios y clientes.">
+  <meta name="theme-color" content="#08090b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<div data-root style="background:var(--bg);color:var(--text);font-family:var(--sans);position:relative;overflow-x:hidden">
 
-<header class="site-header">
-  <nav class="nav">
-    <a href="index.html" class="brand">T<span class="dot">.</span>O<span class="dot">.</span>Q <small>Transforma o Quiebra</small></a>
-    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="index.html#servicios">Servicios</a></li>
-      <li><a href="index.html#portafolio">Portafolio</a></li>
-      <li><a href="tienda.html">Tienda</a></li>
-      <li><a href="sobre-nosotros.html">Nosotros</a></li>
-      <li><a href="index.html#contacto" class="nav-cta">Contacto</a></li>
-    </ul>
-  </nav>
-</header>
+  <div aria-hidden="true" style="position:fixed;top:0;left:0;right:0;height:2px;z-index:60;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,transparent,var(--accent));animation:toqProgress linear both;animation-timeline:scroll(root);pointer-events:none"></div>
 
-<main>
-  <section class="page-hero">
-    <div class="container">
-      <span class="kicker">// Legal</span>
-      <h1>Política de Privacidad</h1>
-    </div>
-  </section>
-
-  <section style="padding-top: 10px;">
-    <div class="container">
-      <div class="prose">
-        <span class="updated">Última actualización: julio 2026 · Documento genérico editable — revisar con asesoría legal local.</span>
-
-        <h2>1. Responsable del tratamiento</h2>
-        <p>T.O.Q ("Transforma O Quiebra") es responsable del tratamiento de los datos personales recogidos a través de este sitio web. Para cualquier consulta sobre privacidad puedes escribir a [correo@toq.dev].</p>
-
-        <h2>2. Datos que recopilamos</h2>
-        <ul>
-          <li><strong style="color: var(--text);">Formulario de contacto:</strong> nombre, correo electrónico y el contenido del mensaje que nos envías.</li>
-          <li><strong style="color: var(--text);">Proceso de compra:</strong> datos de identificación y contacto necesarios para emitir la licencia, facturar y coordinar la entrega del software.</li>
-          <li><strong style="color: var(--text);">Comprobantes de pago:</strong> cuando pagas por transferencia o billetera digital, recibimos el comprobante que nos envías para verificar el pago.</li>
+  <header data-header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);background:rgba(8,9,11,.66);border-bottom:1px solid var(--border);transition:background .35s var(--eo),border-color .35s var(--eo)">
+    <nav data-nav style="max-width:var(--maxw);margin:0 auto;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:relative;transition:padding .35s var(--eo)">
+      <a href="index.html" style="font-weight:800;font-size:1.22rem;letter-spacing:.06em;color:var(--text);display:flex;align-items:baseline;gap:10px">T<span style="color:var(--accent)">.</span>O<span style="color:var(--accent)">.</span>Q <small style="font-family:var(--mono);font-size:.58rem;font-weight:400;color:var(--muted);letter-spacing:.16em;text-transform:uppercase">Transforma o Quiebra</small></a>
+      <button class="x1" data-burger type="button" aria-label="Abrir menú" style="display:none;align-items:center;justify-content:center;width:40px;height:36px;background:transparent;border:1px solid var(--border);border-radius:var(--r);color:var(--text);cursor:pointer;font-size:1rem;transition:border-color .2s ease">≡</button>
+      <ul data-desknav style="display:flex;align-items:center;gap:28px">
+        <li><a class="x2 " data-navlink href="index.html" style="color:var(--muted);font-size:.9rem">Inicio</a></li>
+        <li><a class="x2 " data-navlink href="index.html#servicios" style="color:var(--muted);font-size:.9rem">Servicios</a></li>
+        <li><a class="x2 " data-navlink href="index.html#portafolio" style="color:var(--muted);font-size:.9rem">Portafolio</a></li>
+        <li><a class="x2 " data-navlink href="tienda.html" style="color:var(--muted);font-size:.9rem">Tienda</a></li>
+        <li><a class="x2 " data-navlink href="sobre-nosotros.html" style="color:var(--muted);font-size:.9rem">Nosotros</a></li>
+        <li><a class="x3" data-btn href="index.html#contacto" style="color:var(--text);border:1px solid var(--border-strong);padding:9px 20px;border-radius:var(--r);font-weight:500;font-size:.88rem;display:inline-block;transition:background .2s var(--eo),border-color .2s var(--eo),transform .2s var(--eo)">Contacto</a></li>
+      </ul>
+      <ul data-mobilenav style="position:absolute;top:100%;left:0;right:0;display:flex;flex-direction:column;gap:0;background:rgba(8,9,11,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:8px 26px 22px;animation:toqRise .4s var(--eo) both">
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.02s both"><a href="index.html" data-navclose style="color:var(--text);font-size:.98rem">Inicio</a></li>
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.06s both"><a href="index.html#servicios" data-navclose style="color:var(--text);font-size:.98rem">Servicios</a></li>
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.10s both"><a href="index.html#portafolio" data-navclose style="color:var(--text);font-size:.98rem">Portafolio</a></li>
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.14s both"><a href="tienda.html" data-navclose style="color:var(--text);font-size:.98rem">Tienda</a></li>
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.18s both"><a href="sobre-nosotros.html" data-navclose style="color:var(--text);font-size:.98rem">Nosotros</a></li>
+          <li style="padding:16px 0 0;animation:toqRise .45s var(--eo) .24s both"><a data-btn href="index.html#contacto" data-navclose style="display:block;text-align:center;color:var(--text);border:1px solid var(--border-strong);padding:12px 20px;border-radius:var(--r);font-weight:500">Contacto</a></li>
         </ul>
+    </nav>
+  </header>
 
-        <h2>3. Datos de pago</h2>
-        <p>T.O.Q <strong style="color: var(--text);">no almacena números completos de tarjetas de crédito o débito ni códigos de seguridad</strong>. Cuando el sitio opere con pasarelas de pago (Stripe, PayPal, Payphone u otras), los datos de tarjeta serán capturados y procesados directamente por dichos proveedores certificados (PCI-DSS), bajo sus propias políticas de privacidad. Los datos bancarios que publicamos para transferencias son cuentas de cobro de T.O.Q, no datos del cliente.</p>
+  <main style="position:relative;z-index:1">
 
-        <h2>4. Finalidad del tratamiento</h2>
-        <ul>
-          <li>Responder consultas y solicitudes de cotización.</li>
-          <li>Gestionar compras, licencias, facturación y soporte técnico.</li>
-          <li>Enviar comunicaciones relacionadas con el servicio contratado.</li>
-          <li>Enviar novedades comerciales solo si el usuario lo ha aceptado expresamente.</li>
-        </ul>
+    <section data-hero style="position:relative;padding:74px 0 62px;overflow:hidden;isolation:isolate;border-bottom:1px solid var(--border)">
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden">
+        <div style="position:absolute;inset:-16%;background-image:linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);background-size:72px 72px;animation:toqGrid 26s linear infinite;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 30% 20%,#000 0%,rgba(0,0,0,.3) 58%,transparent 80%);mask-image:radial-gradient(ellipse 70% 70% at 30% 20%,#000 0%,rgba(0,0,0,.3) 58%,transparent 80%)"></div>
+        <div data-floor style="position:absolute;inset:0;perspective:420px">
+          <div style="position:absolute;left:-70%;right:-70%;top:72%;height:150%;transform:rotateX(79deg);transform-origin:50% 0;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 46%);mask-image:linear-gradient(180deg,#000 0%,transparent 46%)">
+            <div style="position:absolute;left:0;right:0;top:-90px;bottom:-90px;background-image:linear-gradient(var(--accent-line) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:90px 90px;animation:toqFloor 4.2s linear infinite;will-change:transform"></div>
+          </div>
+        </div>
+        <div data-aurora style="position:absolute;top:-56%;left:22%;width:min(820px,110vw);height:560px;background:radial-gradient(ellipse at center,var(--accent-soft) 0%,rgba(59,130,246,.04) 40%,transparent 68%);animation:toqDrift 24s ease-in-out infinite;will-change:transform"></div>
+        <div data-glow style="position:absolute;top:0;left:0;width:460px;height:460px;margin:-230px 0 0 -230px;background:radial-gradient(circle at center,rgba(59,130,246,.10) 0%,transparent 62%);opacity:0;transition:opacity .6s var(--eo),transform .5s var(--eo);will-change:transform"></div>
+      </div>
+      <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px;position:relative">
+        <nav class="breadcrumb" aria-label="Ruta" style="font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:26px;animation:toqFade .8s var(--eo) both"><a href="index.html">Inicio</a> <span style="color:var(--accent)">/</span> Política de privacidad</nav>
+        <span style="font-family:var(--mono);font-size:.66rem;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);display:block;margin-bottom:20px;animation:toqRise .8s var(--eo) .05s both">// Legal</span>
+        <h1 style="font-size:clamp(2.3rem,6vw,4.1rem);font-weight:600;letter-spacing:-.042em;line-height:1.02;display:flex;flex-wrap:wrap;gap:0 .18em"><span style="display:inline-block;overflow:hidden;padding:0 .04em"><span style="display:inline-block;animation:toqFlip 1.05s var(--eo) 0.08s both">Política</span></span> <span style="display:inline-block;overflow:hidden;padding:0 .04em"><span style="display:inline-block;animation:toqFlip 1.05s var(--eo) 0.17s both">de</span></span> <span style="display:inline-block;overflow:hidden;padding:0 .04em"><span style="display:inline-block;animation:toqFlip 1.05s var(--eo) 0.26s both">Privacidad</span></span></h1>
+        <div style="width:56px;height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:28px 0 0;transform:scaleX(0);transform-origin:0 50%;animation:toqGrow .9s var(--eo) .55s both"></div>
+        <p style="color:var(--muted);max-width:58ch;margin:26px 0 0;font-size:1.02rem;font-weight:300;line-height:1.75;text-wrap:pretty;animation:toqRise 1s var(--eo) .48s both">Última actualización: agosto 2026. Documento genérico editable — revísalo con asesoría legal local antes de publicarlo.</p>
+      </div>
+    </section>
 
-        <h2>5. Conservación y seguridad</h2>
-        <p>Conservamos los datos solo durante el tiempo necesario para las finalidades descritas o mientras exista una relación comercial, y aplicamos medidas técnicas y organizativas razonables para protegerlos contra acceso no autorizado, pérdida o alteración.</p>
+    <section data-sec style="padding:84px 0 104px">
+      <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px">
+        <div data-legal style="display:grid;grid-template-columns:250px 1fr;gap:64px;align-items:start">
+          <aside data-sticky style="position:sticky;top:104px">
+            <span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:16px">Contenido</span>
+            <nav class="toc" data-toc aria-label="Índice">
+            <a href="#s1">1. Responsable del tratamiento</a>
+            <a href="#s2">2. Datos que recopilamos</a>
+            <a href="#s3">3. Datos de pago</a>
+            <a href="#s4">4. Finalidad del tratamiento</a>
+            <a href="#s5">5. Conservación y seguridad</a>
+            <a href="#s6">6. Compartición con terceros</a>
+            <a href="#s7">7. Derechos del usuario</a>
+            <a href="#s8">8. Cookies y analítica</a>
+            <a href="#s9">9. Cambios en esta política</a>
+            </nav>
+          </aside>
+          <div class="prose-legal" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s var(--eo),transform .8s var(--eo)">
+          <h2 id="s1">1. Responsable del tratamiento</h2>
+          <p>T.O.Q ("Transforma O Quiebra") es responsable del tratamiento de los datos personales recogidos a través de este sitio web. Para cualquier consulta sobre privacidad puedes escribir a <a href="mailto:transformaoquiebra@gmail.com">transformaoquiebra@gmail.com</a>.</p>
+          <h2 id="s2">2. Datos que recopilamos</h2>
+          <ul><li><strong>Formulario de contacto:</strong> nombre, correo electrónico y el contenido del mensaje que nos envías.</li><li><strong>Proceso de compra:</strong> datos de identificación y contacto necesarios para emitir la licencia, facturar y coordinar la entrega del software.</li><li><strong>Comprobantes de pago:</strong> cuando pagas por transferencia o billetera digital, recibimos el comprobante que nos envías para verificar el pago.</li></ul>
+          <h2 id="s3">3. Datos de pago</h2>
+          <p>T.O.Q <strong>no almacena números completos de tarjetas de crédito o débito ni códigos de seguridad</strong>. Cuando el sitio opere con pasarelas de pago (Stripe, PayPal, Payphone u otras), los datos de tarjeta serán capturados y procesados directamente por dichos proveedores certificados (PCI-DSS), bajo sus propias políticas de privacidad. Los datos bancarios que publicamos para transferencias son cuentas de cobro de T.O.Q, no datos del cliente.</p>
+          <h2 id="s4">4. Finalidad del tratamiento</h2>
+          <ul><li>Responder consultas y solicitudes de cotización.</li><li>Gestionar compras, licencias, facturación y soporte técnico.</li><li>Enviar comunicaciones relacionadas con el servicio contratado.</li><li>Enviar novedades comerciales solo si el usuario lo ha aceptado expresamente.</li></ul>
+          <h2 id="s5">5. Conservación y seguridad</h2>
+          <p>Conservamos los datos solo durante el tiempo necesario para las finalidades descritas o mientras exista una relación comercial, y aplicamos medidas técnicas y organizativas razonables para protegerlos contra acceso no autorizado, pérdida o alteración.</p>
+          <h2 id="s6">6. Compartición con terceros</h2>
+          <p>No vendemos ni cedemos datos personales a terceros. Solo compartimos datos con proveedores estrictamente necesarios para operar (por ejemplo, pasarelas de pago o servicios de correo), que actúan bajo sus propias obligaciones de protección de datos, o cuando una autoridad competente lo exija legalmente.</p>
+          <h2 id="s7">7. Derechos del usuario</h2>
+          <p>Puedes solicitar en cualquier momento el acceso, rectificación, actualización o eliminación de tus datos personales escribiendo a <a href="mailto:transformaoquiebra@gmail.com">transformaoquiebra@gmail.com</a>. Atenderemos tu solicitud en los plazos que establezca la normativa aplicable.</p>
+          <h2 id="s8">8. Cookies y analítica</h2>
+          <p>Este sitio no utiliza cookies de rastreo publicitario. Si en el futuro se incorporan herramientas de analítica, se informará en esta política y, cuando la ley lo requiera, se solicitará el consentimiento correspondiente.</p>
+          <h2 id="s9">9. Cambios en esta política</h2>
+          <p>T.O.Q puede actualizar esta política para reflejar cambios legales u operativos. La versión vigente estará siempre publicada en esta página con su fecha de actualización.</p>
+          </div>
+        </div>
+        <div data-reveal data-d="60" style="margin-top:70px;border-top:1px solid var(--border);padding-top:32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .8s var(--eo),transform .8s var(--eo)">
+          <p style="color:var(--muted);font-size:.92rem;font-weight:300;margin:0">¿Dudas sobre este documento? Escríbenos y te respondemos en menos de 24 horas.</p>
+          <a class="x9" data-btn href="index.html#contacto" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 24px;border-radius:var(--r);font-weight:500;font-size:.9rem;color:var(--text);border:1px solid var(--border-strong);white-space:nowrap;transition:background .2s var(--eo),border-color .2s var(--eo),transform .2s var(--eo)">Contactar <span data-arrow>&#8594;</span></a>
+        </div>
+      </div>
+    </section>
 
-        <h2>6. Compartición con terceros</h2>
-        <p>No vendemos ni cedemos datos personales a terceros. Solo compartimos datos con proveedores estrictamente necesarios para operar (por ejemplo, pasarelas de pago o servicios de correo), que actúan bajo sus propias obligaciones de protección de datos, o cuando una autoridad competente lo exija legalmente.</p>
+  </main>
 
-        <h2>7. Derechos del usuario</h2>
-        <p>Puedes solicitar en cualquier momento el acceso, rectificación, actualización o eliminación de tus datos personales escribiendo a [correo@toq.dev]. Atenderemos tu solicitud en los plazos que establezca la normativa aplicable.</p>
-
-        <h2>8. Cookies y analítica</h2>
-        <p>Este sitio no utiliza cookies de rastreo publicitario. Si en el futuro se incorporan herramientas de analítica, se informará en esta política y, cuando la ley lo requiera, se solicitará el consentimiento correspondiente.</p>
-
-        <h2>9. Cambios en esta política</h2>
-        <p>T.O.Q puede actualizar esta política para reflejar cambios legales u operativos. La versión vigente estará siempre publicada en esta página con su fecha de actualización.</p>
+  <footer style="border-top:1px solid var(--border);background:var(--bg);padding:78px 0 34px;position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:58%;perspective:340px;pointer-events:none;opacity:.5">
+      <div style="position:absolute;left:-60%;right:-60%;top:0;height:220%;transform:rotateX(80deg);transform-origin:50% 0;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000,transparent 55%);mask-image:linear-gradient(180deg,#000,transparent 55%)">
+        <div style="position:absolute;left:0;right:0;top:-90px;bottom:-90px;background-image:linear-gradient(var(--accent-line) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:90px 90px;animation:toqFloor 5.6s linear infinite;will-change:transform"></div>
       </div>
     </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="brand">T<span class="dot">.</span>O<span class="dot">.</span>Q</a>
-        <p style="margin-top:14px;">Desarrollo de software personalizado para individuos y empresas. Transforma o Quiebra.</p>
+    <div aria-hidden="true" style="position:absolute;left:50%;bottom:-6%;transform:translateX(-50%) perspective(700px) rotateX(24deg);font-size:clamp(7rem,26vw,20rem);font-weight:800;letter-spacing:-.05em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.05);pointer-events:none;user-select:none;white-space:nowrap">T.O.Q</div>
+    <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px;position:relative">
+      <div data-split style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:38px;margin-bottom:40px">
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .7s var(--eo),transform .7s var(--eo)">
+          <a href="index.html" style="font-weight:800;font-size:1.18rem;letter-spacing:.06em;color:var(--text)">T<span style="color:var(--accent)">.</span>O<span style="color:var(--accent)">.</span>Q</a>
+          <p style="margin-top:14px;color:var(--muted);font-size:.89rem;max-width:300px;font-weight:300;line-height:1.7">Desarrollo de software personalizado para individuos y empresas. Transforma o Quiebra.</p>
+        </div>
+        <div data-reveal data-d="90" style="opacity:0;transform:translateY(20px);transition:opacity .7s var(--eo),transform .7s var(--eo)">
+          <h4 style="font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:16px;font-weight:500">Empresa</h4>
+          <ul style="display:grid;gap:10px">
+            <li><a data-flink href="sobre-nosotros.html" style="color:var(--muted);font-size:.89rem">Sobre nosotros</a></li>
+            <li><a data-flink href="mision-vision.html" style="color:var(--muted);font-size:.89rem">Misión y Visión</a></li>
+            <li><a data-flink href="tienda.html" style="color:var(--muted);font-size:.89rem">Tienda</a></li>
+            <li><a data-flink href="index.html#contacto" style="color:var(--muted);font-size:.89rem">Contacto</a></li>
+          </ul>
+        </div>
+        <div data-reveal data-d="170" style="opacity:0;transform:translateY(20px);transition:opacity .7s var(--eo),transform .7s var(--eo)">
+          <h4 style="font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:16px;font-weight:500">Legal</h4>
+          <ul style="display:grid;gap:10px">
+            <li><a data-flink href="terminos-condiciones.html" style="color:var(--muted);font-size:.89rem">Términos y condiciones</a></li>
+            <li><a data-flink href="politica-privacidad.html" style="color:var(--muted);font-size:.89rem">Política de privacidad</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h4>Empresa</h4>
-        <ul>
-          <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
-          <li><a href="mision-vision.html">Misión y Visión</a></li>
-          <li><a href="tienda.html">Tienda</a></li>
-          <li><a href="index.html#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="terminos-condiciones.html">Términos y condiciones</a></li>
-          <li><a href="politica-privacidad.html">Política de privacidad</a></li>
-        </ul>
+      <div style="border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.8rem">
+        <span>© <span data-year>2026</span> T.O.Q · Transforma O Quiebra. Todos los derechos reservados.</span>
+        <span>Hecho con código, no con plantillas.</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-year></span> T.O.Q — Transforma O Quiebra. Todos los derechos reservados.</span>
-      <span>Hecho con código, no con plantillas.</span>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="js/main.js"></script>
+</div>
+<script src="js/main.js" defer></script>
 </body>
 </html>

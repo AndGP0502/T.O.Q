@@ -1,85 +1,49 @@
-# T.O.Q — Transforma O Quiebra
+# T.O.Q — Transforma o Quiebra
 
-Sitio web oficial de **T.O.Q**, desarrolladora de software. Landing + páginas internas + tienda con checkout (interfaz de pago lista, pasarelas pendientes de integrar).
+Landing estática. Sin build, sin Node, sin dependencias.
 
-**Fundadores:** André Garzón (CEO fundador) · Dennys Chanchicocha (COO Co-fundador)
+## Estructura
 
----
+```
+index.html                Landing principal
+tienda.html               Catálogo: insignia ObtenYA + 4 productos
+checkout.html             Resumen sticky, métodos de pago y confirmación
+sobre-nosotros.html       Manifiesto, el nombre y fundadores
+mision-vision.html        Misión, visión y valores
+terminos-condiciones.html Legal con índice lateral
+politica-privacidad.html  Legal con índice lateral
+css/styles.css            Variables, keyframes, media queries y estados hover/focus/active
+js/main.js                Nav móvil, revelado en scroll, planos 3D, carrusel, formulario e índice legal
+js/checkout.js            Catálogo de productos, método de pago y confirmación del pedido
+assets/img/...            Retratos, iconos de servicios y capturas de producto
+```
 
-## 🚀 Cómo ver el sitio
+## Ejecutar en local
 
-No requiere instalación. Dos opciones:
-
-**Opción A — abrir directo:** doble clic en `index.html`.
-
-**Opción B — servidor local (recomendado, evita problemas con rutas):**
 ```bash
-python3 -m http.server 8742
-```
-Luego abre <http://localhost:8742> en el navegador.
-
----
-
-## 📁 Estructura
-
-```
-T.O.Q.py/
-├── index.html              # Home (hero, nosotros, servicios, productos, contacto)
-├── tienda.html             # Catálogo de productos
-├── checkout.html           # Pago (resumen + carrusel de métodos + confirmación)
-├── sobre-nosotros.html     # Historia y fundadores
-├── mision-vision.html      # Misión, visión y valores
-├── terminos-condiciones.html
-├── politica-privacidad.html
-├── css/
-│   └── styles.css          # TODO el estilo (variables de tema en :root)
-└── js/
-    ├── main.js             # Menú móvil, animaciones, formulario de contacto
-    └── checkout.js         # Productos, precios, carrusel de pago, confirmación
+python3 -m http.server 8000
+# → http://localhost:8000
 ```
 
-> El header y el footer están duplicados en cada HTML (no hay includes). Para cambiar el menú en todas las páginas, usa **Buscar en todos los archivos** (`Cmd+Shift+F` en VS Code).
+Alternativas: `npx serve .` · `php -S localhost:8000` · o abrir `index.html` con doble clic.
 
----
+## Desplegar
 
-## 🛒 Agregar o editar productos
+Cualquier hosting estático sirve la carpeta tal cual:
 
-Un producto vive en **dos lugares** que deben coincidir:
+- **Netlify / Vercel**: arrastra la carpeta, sin comando de build.
+- **GitHub Pages**: sube el contenido a la rama `gh-pages` o a `/docs` en `main`.
+- **Nginx / Apache**: copia la carpeta al `document root`.
 
-1. **`js/checkout.js`** → objeto `PRODUCTS` (nombre, descripción, precio, slug).
-2. **`tienda.html`** → una tarjeta `.product-card` con enlace `checkout.html?producto=SLUG`.
+## Pendientes
 
-Precios actuales: Medicore $899 · Gym System Medicore $499 · Prosperly $299.
+- El formulario de contacto simula el envío. El punto de integración está marcado con `TODO backend` en `js/main.js`.
+- `js/checkout.js` define el catálogo en la constante `CATALOGO` (slug → nombre, descripción, total, nota, logo). Los slugs vigentes son `obtenya`, `medicore-clinicas`, `gym-system`, `portales-web` y `software-medida`.
+- El botón "Confirmar compra" registra la solicitud y deriva el cierre a WhatsApp. Los puntos de integración de Stripe, PayPal y Payphone están marcados con `TODO` en `js/checkout.js`.
+- Los textos legales incluyen dos marcadores por definir: el país de constitución en Términos §10 y la revisión legal local.
+- Falta el logo propio de ObtenYA: `assets/img/productos/obtenya/obtenya-logo.png` es una copia temporal del anterior.
 
----
+## Movimiento
 
-## 💳 Integrar pasarelas de pago (pendiente)
-
-El checkout es **solo interfaz** por ahora. Busca los comentarios `TODO` en `js/checkout.js`:
-
-- **Stripe** (tarjeta) → pegar clave **pública** (`pk_live_...`) e inicializar Stripe Elements.
-- **PayPal / Payphone** → pegar `client-id` / token de comercio.
-
-⚠️ **Nunca pongas claves secretas (`sk_...`) en el frontend.** Van solo en un backend, como variables de entorno (`.env`, ya ignorado por git).
-
-El formulario de contacto también está pendiente de backend (`TODO` en `js/main.js`; opción rápida: [Formspree](https://formspree.io)).
-
----
-
-## 🎨 Cambiar colores
-
-Todo el tema sale de las variables en `css/styles.css` → bloque `:root`:
-`--accent` (cian), `--accent-2` (violeta), `--bg` (fondo).
-
----
-
-## 🔧 Placeholders por completar
-
-Búscalos con `Cmd+Shift+F` escribiendo `[` — están entre corchetes:
-correo, WhatsApp, redes sociales, datos bancarios y textos legales.
-
----
-
-## 👥 Colaboración
-
-Repo mantenido por el equipo T.O.Q. Para contribuir: crea una rama, haz tus cambios y abre un Pull Request.
+Las animaciones respetan `prefers-reduced-motion`. Para bajar la intensidad de forma global, añade
+`data-motion="sutil"` (o `"ninguno"`) a la etiqueta `<html>` de `index.html`.

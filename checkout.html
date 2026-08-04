@@ -2,219 +2,231 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Checkout — T.O.Q | Finalizar compra</title>
   <meta name="description" content="Finaliza tu compra de software T.O.Q eligiendo tu método de pago preferido.">
+  <meta name="theme-color" content="#08090b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<div data-root style="background:var(--bg);color:var(--text);font-family:var(--sans);position:relative;overflow-x:hidden">
 
-<header class="site-header">
-  <nav class="nav">
-    <a href="index.html" class="brand">T<span class="dot">.</span>O<span class="dot">.</span>Q <small>Transforma o Quiebra</small></a>
-    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="index.html#servicios">Servicios</a></li>
-      <li><a href="index.html#portafolio">Portafolio</a></li>
-      <li><a href="tienda.html">Tienda</a></li>
-      <li><a href="sobre-nosotros.html">Nosotros</a></li>
-      <li><a href="index.html#contacto" class="nav-cta">Contacto</a></li>
-    </ul>
-  </nav>
-</header>
+  <div aria-hidden="true" style="position:fixed;top:0;left:0;right:0;height:2px;z-index:60;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,transparent,var(--accent));animation:toqProgress linear both;animation-timeline:scroll(root);pointer-events:none"></div>
 
-<main>
-  <section class="page-hero">
-    <div class="container">
-      <span class="kicker">// Checkout</span>
-      <h1>Finalizar compra</h1>
-      <p>Revisa tu pedido, elige un método de pago y confirma. Nuestro equipo te acompaña en cada paso.</p>
-    </div>
-  </section>
+  <header data-header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);background:rgba(8,9,11,.66);border-bottom:1px solid var(--border);transition:background .35s var(--eo),border-color .35s var(--eo)">
+    <nav data-nav style="max-width:var(--maxw);margin:0 auto;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:relative;transition:padding .35s var(--eo)">
+      <a href="index.html" style="font-weight:800;font-size:1.22rem;letter-spacing:.06em;color:var(--text);display:flex;align-items:baseline;gap:10px">T<span style="color:var(--accent)">.</span>O<span style="color:var(--accent)">.</span>Q <small style="font-family:var(--mono);font-size:.58rem;font-weight:400;color:var(--muted);letter-spacing:.16em;text-transform:uppercase">Transforma o Quiebra</small></a>
+      <button class="x1" data-burger type="button" aria-label="Abrir menú" style="display:none;align-items:center;justify-content:center;width:40px;height:36px;background:transparent;border:1px solid var(--border);border-radius:var(--r);color:var(--text);cursor:pointer;font-size:1rem;transition:border-color .2s ease">≡</button>
+      <ul data-desknav style="display:flex;align-items:center;gap:28px">
+        <li><a class="x2 " data-navlink href="index.html" style="color:var(--muted);font-size:.9rem">Inicio</a></li>
+        <li><a class="x2 " data-navlink href="index.html#servicios" style="color:var(--muted);font-size:.9rem">Servicios</a></li>
+        <li><a class="x2 " data-navlink href="index.html#portafolio" style="color:var(--muted);font-size:.9rem">Portafolio</a></li>
+        <li><a class="x2 " data-navlink href="tienda.html" style="color:var(--muted);font-size:.9rem">Tienda</a></li>
+        <li><a class="x2 " data-navlink href="sobre-nosotros.html" style="color:var(--muted);font-size:.9rem">Nosotros</a></li>
+        <li><a class="x3" data-btn href="index.html#contacto" style="color:var(--text);border:1px solid var(--border-strong);padding:9px 20px;border-radius:var(--r);font-weight:500;font-size:.88rem;display:inline-block;transition:background .2s var(--eo),border-color .2s var(--eo),transform .2s var(--eo)">Contacto</a></li>
+      </ul>
+      <ul data-mobilenav style="position:absolute;top:100%;left:0;right:0;display:flex;flex-direction:column;gap:0;background:rgba(8,9,11,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:8px 26px 22px;animation:toqRise .4s var(--eo) both">
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.02s both"><a href="index.html" data-navclose style="color:var(--text);font-size:.98rem">Inicio</a></li>
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.06s both"><a href="index.html#servicios" data-navclose style="color:var(--text);font-size:.98rem">Servicios</a></li>
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.10s both"><a href="index.html#portafolio" data-navclose style="color:var(--text);font-size:.98rem">Portafolio</a></li>
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.14s both"><a href="tienda.html" data-navclose style="color:var(--text);font-size:.98rem">Tienda</a></li>
+          <li style="padding:11px 0;border-bottom:1px solid var(--border);animation:toqRise .45s var(--eo) 0.18s both"><a href="sobre-nosotros.html" data-navclose style="color:var(--text);font-size:.98rem">Nosotros</a></li>
+          <li style="padding:16px 0 0;animation:toqRise .45s var(--eo) .24s both"><a data-btn href="index.html#contacto" data-navclose style="display:block;text-align:center;color:var(--text);border:1px solid var(--border-strong);padding:12px 20px;border-radius:var(--r);font-weight:500">Contacto</a></li>
+        </ul>
+    </nav>
+  </header>
 
-  <div class="checkout-layout container">
+  <main style="position:relative;z-index:1">
 
-    <!-- ===== Flujo principal de checkout ===== -->
-    <div id="checkout-main">
-
-      <!-- Resumen de la compra -->
-      <div class="order-summary reveal visible">
-        <h2>Resumen de tu compra</h2>
-        <div class="order-row">
-          <div>
-            <div class="o-name" id="order-name">Gym System Medicore</div>
-            <div class="o-desc" id="order-desc">Software de gestión integral para gimnasios</div>
+    <section data-hero style="position:relative;padding:74px 0 62px;overflow:hidden;isolation:isolate;border-bottom:1px solid var(--border)">
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden">
+        <div style="position:absolute;inset:-16%;background-image:linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);background-size:72px 72px;animation:toqGrid 26s linear infinite;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 30% 20%,#000 0%,rgba(0,0,0,.3) 58%,transparent 80%);mask-image:radial-gradient(ellipse 70% 70% at 30% 20%,#000 0%,rgba(0,0,0,.3) 58%,transparent 80%)"></div>
+        <div data-floor style="position:absolute;inset:0;perspective:420px">
+          <div style="position:absolute;left:-70%;right:-70%;top:72%;height:150%;transform:rotateX(79deg);transform-origin:50% 0;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 46%);mask-image:linear-gradient(180deg,#000 0%,transparent 46%)">
+            <div style="position:absolute;left:0;right:0;top:-90px;bottom:-90px;background-image:linear-gradient(var(--accent-line) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:90px 90px;animation:toqFloor 4.2s linear infinite;will-change:transform"></div>
           </div>
-          <div id="order-price">$499 USD</div>
         </div>
-        <div class="order-row total">
-          <span>Total</span>
-          <span id="order-total">$499 USD</span>
-        </div>
+        <div data-aurora style="position:absolute;top:-56%;left:22%;width:min(820px,110vw);height:560px;background:radial-gradient(ellipse at center,var(--accent-soft) 0%,rgba(59,130,246,.04) 40%,transparent 68%);animation:toqDrift 24s ease-in-out infinite;will-change:transform"></div>
+        <div data-glow style="position:absolute;top:0;left:0;width:460px;height:460px;margin:-230px 0 0 -230px;background:radial-gradient(circle at center,rgba(59,130,246,.10) 0%,transparent 62%);opacity:0;transition:opacity .6s var(--eo),transform .5s var(--eo);will-change:transform"></div>
       </div>
-
-      <p class="secure-note"><span class="lock">🔒</span> Pagos procesados de forma segura</p>
-
-      <!-- Carrusel de métodos de pago -->
-      <div class="section-head" style="margin-bottom: 20px;">
-        <h2 style="font-size: 1.2rem;">Elige tu método de pago</h2>
-        <p class="section-sub" style="font-size: 0.9rem;">Desliza para ver todas las opciones y haz clic en una para continuar.</p>
+      <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px;position:relative">
+        <nav class="breadcrumb" aria-label="Ruta" style="font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:26px;animation:toqFade .8s var(--eo) both"><a href="index.html">Inicio</a> <span style="color:var(--accent)">/</span> Checkout</nav>
+        <span style="font-family:var(--mono);font-size:.66rem;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);display:block;margin-bottom:20px;animation:toqRise .8s var(--eo) .05s both">// Checkout</span>
+        <h1 style="font-size:clamp(2.3rem,6vw,4.1rem);font-weight:600;letter-spacing:-.042em;line-height:1.02;display:flex;flex-wrap:wrap;gap:0 .18em"><span style="display:inline-block;overflow:hidden;padding:0 .04em"><span style="display:inline-block;animation:toqFlip 1.05s var(--eo) 0.08s both">Finalizar</span></span> <span style="display:inline-block;overflow:hidden;padding:0 .04em"><span style="display:inline-block;animation:toqFlip 1.05s var(--eo) 0.17s both">compra</span></span></h1>
+        <div style="width:56px;height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:28px 0 0;transform:scaleX(0);transform-origin:0 50%;animation:toqGrow .9s var(--eo) .55s both"></div>
+        <p style="color:var(--muted);max-width:58ch;margin:26px 0 0;font-size:1.02rem;font-weight:300;line-height:1.75;text-wrap:pretty;animation:toqRise 1s var(--eo) .48s both">Revisa tu pedido, elige un método de pago y confirma. Uno de los fundadores te acompaña en cada paso.</p>
       </div>
+    </section>
 
-      <div class="pay-carousel-wrap">
-        <button class="carousel-arrow prev" id="carousel-prev" aria-label="Anterior">‹</button>
-        <div class="pay-carousel" id="pay-carousel">
+    <section data-sec style="padding:72px 0 104px">
+      <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px">
+      <div data-checkout id="checkout-main" style="display:grid;grid-template-columns:1fr 372px;gap:24px;align-items:start">
 
-          <div class="pay-card" data-method="card" role="button" tabindex="0">
-            <div class="pay-icon">💳</div>
-            <div class="pay-name">Tarjeta</div>
-            <div class="pay-sub">Visa · Mastercard · crédito/débito</div>
-          </div>
-
-          <div class="pay-card" data-method="paypal" role="button" tabindex="0">
-            <div class="pay-icon">🅿️</div>
-            <div class="pay-name">PayPal</div>
-            <div class="pay-sub">Pago con tu cuenta PayPal</div>
-          </div>
-
-          <div class="pay-card" data-method="payphone" role="button" tabindex="0">
-            <div class="pay-icon">📲</div>
-            <div class="pay-name">Payphone</div>
-            <div class="pay-sub">Pago con app Payphone</div>
-          </div>
-
-          <div class="pay-card" data-method="transfer" role="button" tabindex="0">
-            <div class="pay-icon">🏦</div>
-            <div class="pay-name">Transferencia</div>
-            <div class="pay-sub">Transferencia bancaria local</div>
-          </div>
-
-          <div class="pay-card" data-method="wallet" role="button" tabindex="0">
-            <div class="pay-icon">📱</div>
-            <div class="pay-name">Billetera digital</div>
-            <div class="pay-sub">[Pago móvil del país — editable]</div>
-          </div>
-
-          <div class="pay-card disabled" data-method="crypto" role="button" aria-disabled="true">
-            <div class="pay-icon">₿</div>
-            <div class="pay-name">Criptomonedas</div>
-            <div class="pay-sub">Próximamente</div>
-          </div>
-
-        </div>
-        <button class="carousel-arrow next" id="carousel-next" aria-label="Siguiente">›</button>
-      </div>
-
-      <!-- ===== Paneles por método ===== -->
-
-      <!-- Tarjeta: maqueta de UI. La tokenización/procesamiento real es de la pasarela. -->
-      <div class="pay-panel" id="panel-card">
-        <h3>💳 Pago con tarjeta de crédito/débito</h3>
-        <!-- TODO: integrar API key real de Stripe aquí (Stripe Elements reemplaza este formulario).
-             Este formulario es solo interfaz: no captura ni envía datos reales. -->
-        <form id="card-form">
-          <div class="form-group">
-            <label for="card-name">Nombre en la tarjeta</label>
-            <input class="form-control" type="text" id="card-name" autocomplete="off" placeholder="Como aparece en la tarjeta" required>
-          </div>
-          <div class="form-group">
-            <label for="card-number">Número de tarjeta</label>
-            <input class="form-control" type="text" id="card-number" inputmode="numeric" autocomplete="off" placeholder="•••• •••• •••• ••••" maxlength="19" required>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="card-exp">Vencimiento</label>
-              <input class="form-control" type="text" id="card-exp" autocomplete="off" placeholder="MM/AA" maxlength="5" required>
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--accent)">01</span><span style="font-size:.95rem;font-weight:500;letter-spacing:-.01em">Elige tu método de pago</span><span style="flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)"></span></div>
+          <div data-paygrid style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div class="x13 " data-pay role="button" tabindex="0" data-method="card" data-card data-reveal data-d="40" style="position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--r);background:transparent;opacity:0;transform:perspective(1000px) translateY(30px) rotateX(8deg);transform-origin:50% 100%;filter:blur(7px);transition:opacity .85s var(--eo),transform .85s var(--eo),filter .85s var(--eo),border-color .3s var(--eo),background .3s var(--eo),box-shadow .45s var(--eo);padding:20px 22px;display:flex;flex-direction:column;gap:12px;cursor:pointer">
+            <div data-glare aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div style="perspective:400px;display:flex"><svg data-lift width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><rect x="2.5" y="5.5" width="19" height="13" rx="2"></rect><path d="M2.5 10h19"></path></svg></div>
+              <span data-checkmark aria-hidden="true" style="font-size:.8rem;color:var(--accent);opacity:0;transition:opacity .25s var(--eo)">&#10003;</span>
             </div>
-            <div class="form-group">
-              <label for="card-cvv">CVV</label>
-              <input class="form-control" type="password" id="card-cvv" autocomplete="off" placeholder="•••" maxlength="4" required>
+            <div>
+              <div style="font-size:.95rem;font-weight:500;letter-spacing:-.01em">Tarjeta</div>
+              <div style="font-family:var(--mono);font-size:.63rem;color:var(--muted);letter-spacing:.05em;margin-top:5px;line-height:1.5">Visa · Mastercard</div>
             </div>
           </div>
-          <p class="instructions" style="margin-bottom: 16px;">Al conectar la pasarela real, este paso se procesará de forma segura por el proveedor certificado (PCI-DSS). Ningún dato de tarjeta se guarda en este sitio.</p>
-          <button type="submit" class="btn btn-primary btn-block">Pagar con tarjeta</button>
-        </form>
+          <div class="x13 " data-pay role="button" tabindex="0" data-method="payphone" data-card data-reveal data-d="140" style="position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--r);background:transparent;opacity:0;transform:perspective(1000px) translateY(30px) rotateX(8deg);transform-origin:50% 100%;filter:blur(7px);transition:opacity .85s var(--eo),transform .85s var(--eo),filter .85s var(--eo),border-color .3s var(--eo),background .3s var(--eo),box-shadow .45s var(--eo);padding:20px 22px;display:flex;flex-direction:column;gap:12px;cursor:pointer">
+            <div data-glare aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div style="perspective:400px;display:flex"><svg data-lift width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18.5h2"></path></svg></div>
+              <span data-checkmark aria-hidden="true" style="font-size:.8rem;color:var(--accent);opacity:0;transition:opacity .25s var(--eo)">&#10003;</span>
+            </div>
+            <div>
+              <div style="font-size:.95rem;font-weight:500;letter-spacing:-.01em">Payphone</div>
+              <div style="font-family:var(--mono);font-size:.63rem;color:var(--muted);letter-spacing:.05em;margin-top:5px;line-height:1.5">Solicitud de cobro a tu app</div>
+            </div>
+          </div>
+          <div class="x13 " data-pay role="button" tabindex="0" data-method="transfer" data-card data-reveal data-d="190" style="position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--r);background:transparent;opacity:0;transform:perspective(1000px) translateY(30px) rotateX(8deg);transform-origin:50% 100%;filter:blur(7px);transition:opacity .85s var(--eo),transform .85s var(--eo),filter .85s var(--eo),border-color .3s var(--eo),background .3s var(--eo),box-shadow .45s var(--eo);padding:20px 22px;display:flex;flex-direction:column;gap:12px;cursor:pointer">
+            <div data-glare aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div style="perspective:400px;display:flex"><svg data-lift width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M3.5 9.5 12 4l8.5 5.5"></path><path d="M5.5 10.5v8m5-8v8m3-8v8m5-8v8M3 20.5h18"></path></svg></div>
+              <span data-checkmark aria-hidden="true" style="font-size:.8rem;color:var(--accent);opacity:0;transition:opacity .25s var(--eo)">&#10003;</span>
+            </div>
+            <div>
+              <div style="font-size:.95rem;font-weight:500;letter-spacing:-.01em">Transferencia</div>
+              <div style="font-family:var(--mono);font-size:.63rem;color:var(--muted);letter-spacing:.05em;margin-top:5px;line-height:1.5">Banco local · comprobante</div>
+            </div>
+          </div>
+          <div class="x13 " data-pay role="button" tabindex="0" data-method="wallet" data-card data-reveal data-d="240" style="position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--r);background:transparent;opacity:0;transform:perspective(1000px) translateY(30px) rotateX(8deg);transform-origin:50% 100%;filter:blur(7px);transition:opacity .85s var(--eo),transform .85s var(--eo),filter .85s var(--eo),border-color .3s var(--eo),background .3s var(--eo),box-shadow .45s var(--eo);padding:20px 22px;display:flex;flex-direction:column;gap:12px;cursor:pointer">
+            <div data-glare aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div style="perspective:400px;display:flex"><svg data-lift width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><rect x="2.8" y="6" width="18.4" height="12.5" rx="2.5"></rect><path d="M16.5 12.2h2.5"></path></svg></div>
+              <span data-checkmark aria-hidden="true" style="font-size:.8rem;color:var(--accent);opacity:0;transition:opacity .25s var(--eo)">&#10003;</span>
+            </div>
+            <div>
+              <div style="font-size:.95rem;font-weight:500;letter-spacing:-.01em">Billetera digital</div>
+              <div style="font-family:var(--mono);font-size:.63rem;color:var(--muted);letter-spacing:.05em;margin-top:5px;line-height:1.5">Pago móvil del país</div>
+            </div>
+          </div>
+          </div>
+
+        <div data-panel id="panel-card" style="border:1px solid var(--border);border-radius:var(--r);padding:32px 34px;margin-top:20px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 62%)">
+          <h3 style="font-size:1.05rem;font-weight:600;letter-spacing:-.02em;margin-bottom:14px">Pago con tarjeta de crédito o débito</h3>
+          <p style="color:var(--muted);font-size:.93rem;font-weight:300;line-height:1.75;text-wrap:pretty;margin-bottom:22px">Te pondremos en contacto con los desarrolladores para completar el pago a través con tarjeta.</p>
+            <a class="x8" data-btn href="https://wa.me/593983760090" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:.9rem;color:var(--text);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:var(--r);padding:12px 20px;transition:border-color .25s var(--eo),background .25s var(--eo),transform .25s var(--eo)"><span aria-hidden="true" data-pulse style="width:6px;height:6px;border-radius:50%;background:var(--ok)"></span>Escribir por WhatsApp · +593 98 376 0090</a>
+          </form>
+        </div>
+        <div data-panel id="panel-paypal" style="border:1px solid var(--border);border-radius:var(--r);padding:32px 34px;margin-top:20px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 62%)">
+          <h3 style="font-size:1.05rem;font-weight:600;letter-spacing:-.02em;margin-bottom:14px">Pago con PayPal</h3>
+          <p style="color:var(--muted);font-size:.93rem;font-weight:300;line-height:1.75;text-wrap:pretty">Te pondremos en contacto con los desarrolladores para completar el pago a través de PayPal.</p>
+          <a class="x8" data-btn href="https://wa.me/593983760090" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:.9rem;color:var(--text);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:var(--r);padding:12px 20px;transition:border-color .25s var(--eo),background .25s var(--eo),transform .25s var(--eo)"><span aria-hidden="true" data-pulse style="width:6px;height:6px;border-radius:50%;background:var(--ok)"></span>Escribir por WhatsApp · +593 98 376 0090</a>
+        </div>
+        <div data-panel id="panel-payphone" style="border:1px solid var(--border);border-radius:var(--r);padding:32px 34px;margin-top:20px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 62%)">
+          <h3 style="font-size:1.05rem;font-weight:600;letter-spacing:-.02em;margin-bottom:14px">Pago con Payphone</h3>
+          <p style="color:var(--muted);font-size:.93rem;font-weight:300;line-height:1.75;text-wrap:pretty">Recibirás una solicitud de cobro en tu app Payphone al confirmar el pedido.</p>
+          <a class="x8" data-btn href="https://wa.me/593983760090" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:.9rem;color:var(--text);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:var(--r);padding:12px 20px;transition:border-color .25s var(--eo),background .25s var(--eo),transform .25s var(--eo)"><span aria-hidden="true" data-pulse style="width:6px;height:6px;border-radius:50%;background:var(--ok)"></span>Escribir por WhatsApp · +593 98 376 0090</a>
+        </div>
+        <div data-panel id="panel-transfer" style="border:1px solid var(--border);border-radius:var(--r);padding:32px 34px;margin-top:20px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 62%)">
+          <h3 style="font-size:1.05rem;font-weight:600;letter-spacing:-.02em;margin-bottom:14px">Transferencia bancaria local</h3>
+          <p style="color:var(--muted);font-size:.93rem;font-weight:300;line-height:1.75;text-wrap:pretty">Te enviamos los datos de la cuenta por WhatsApp y verificamos tu comprobante. <strong style="color:var(--text);font-weight:500">Tu licencia se activa al confirmar el pago.</strong></p>
+          <a class="x8" data-btn href="https://wa.me/593983760090" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:.9rem;color:var(--text);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:var(--r);padding:12px 20px;transition:border-color .25s var(--eo),background .25s var(--eo),transform .25s var(--eo)"><span aria-hidden="true" data-pulse style="width:6px;height:6px;border-radius:50%;background:var(--ok)"></span>Escribir por WhatsApp · +593 98 376 0090</a>
+        </div>
+        <div data-panel id="panel-wallet" style="border:1px solid var(--border);border-radius:var(--r);padding:32px 34px;margin-top:20px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 62%)">
+          <h3 style="font-size:1.05rem;font-weight:600;letter-spacing:-.02em;margin-bottom:14px">Billetera digital</h3>
+          <p style="color:var(--muted);font-size:.93rem;font-weight:300;line-height:1.75;text-wrap:pretty">Pago móvil del país: coordinamos el envío y validamos el comprobante en el momento.</p>
+          <a class="x8" data-btn href="https://wa.me/593983760090" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:.9rem;color:var(--text);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:var(--r);padding:12px 20px;transition:border-color .25s var(--eo),background .25s var(--eo),transform .25s var(--eo)"><span aria-hidden="true" data-pulse style="width:6px;height:6px;border-radius:50%;background:var(--ok)"></span>Escribir por WhatsApp · +593 98 376 0090</a>
+        </div>
+
+          <div style="margin-top:34px">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--accent)">02</span><span style="font-size:.95rem;font-weight:500;letter-spacing:-.01em">Confirma y te contactamos</span><span style="flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)"></span></div>
+            <p style="color:var(--muted);font-size:.93rem;font-weight:300;line-height:1.75;text-wrap:pretty;max-width:64ch">Al confirmar registramos tu pedido y uno de los fundadores te escribe en menos de 24 horas para cerrar el pago, la instalación y la capacitación.</p>
+          </div>
+        </div>
+
+        <aside data-sticky style="position:sticky;top:100px">
+          <div data-reveal style="border:1px solid var(--border);border-radius:var(--r);background:linear-gradient(180deg,rgba(255,255,255,.028),transparent 62%);padding:28px 26px;opacity:0;transform:translateY(20px);transition:opacity .8s var(--eo),transform .8s var(--eo)">
+            <span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:22px">Resumen de tu compra</span>
+            <div style="display:flex;gap:14px;align-items:flex-start;padding-bottom:20px;border-bottom:1px solid var(--border)">
+              <img id="order-logo" src="assets/img/productos/obtenya/obtenya-logo.png" alt="" width="38" height="38" style="width:38px;height:38px;object-fit:contain;border-radius:3px;flex:0 0 auto">
+              <div>
+                <div id="order-name" style="font-size:1.05rem;font-weight:600;letter-spacing:-.02em">ObtenYA</div>
+                <div id="order-desc" style="color:var(--muted);font-size:.85rem;font-weight:300;line-height:1.6;margin-top:5px">Prospección y scraping con IA para toda Latinoamérica</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:20px 0 6px">
+              <span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">Total</span>
+              <span id="order-total" style="font-size:1.35rem;font-weight:600;letter-spacing:-.03em;text-align:right">$0 · $25 · $65 <span style="font-size:.72rem;color:var(--muted);font-weight:300;letter-spacing:0">/mes USD</span></span>
+            </div>
+            <div id="order-note" style="font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:22px">Suscripción · cancela cuando quieras</div>
+            <div data-hint id="select-method-hint" style="color:#f87171;font-size:.8rem;margin-bottom:14px;animation:toqFade .25s ease both">Selecciona un método de pago para continuar.</div>
+            <button class="x15" data-btn data-inv id="confirm-purchase" type="button" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 26px;border-radius:var(--r);font-weight:500;font-size:.9rem;background:var(--text);color:var(--bg);border:1px solid var(--text);white-space:nowrap;transition:background .2s var(--eo),transform .2s var(--eo),box-shadow .35s var(--eo);width:100%;padding:15px 26px;font-size:.95rem;cursor:pointer">Confirmar compra <span data-arrow>&#8594;</span></button>
+            <div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--border);display:grid;gap:10px">
+              <span style="font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="color:var(--accent)"><rect x="4" y="10.5" width="16" height="10" rx="2"></rect><path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7"></path></svg>Pagos procesados de forma segura</span>
+              <span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Sin cargos ocultos</span>
+            </div>
+          </div>
+          <a class="x2 " href="tienda.html" style="display:inline-block;margin-top:16px;font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">&#8592; Volver a la tienda</a>
+        </aside>
       </div>
 
-      <div class="pay-panel" id="panel-paypal">
-        <h3>🅿️ Pago con PayPal</h3>
-        <p class="instructions">Te pondremos en contacto con los desarrolladores para completar el pago a través de PayPal.</p>
-        <!-- TODO: integrar PayPal aquí (SDK oficial de PayPal Buttons con client-id real del comercio). -->
-        <button class="btn btn-primary btn-block" style="margin-top: 18px;" data-gateway-pending>Continuar con PayPal</button>
+      <div data-conf id="confirmation" style="max-width:620px;margin:0 auto;text-align:center;border:1px solid var(--border);border-radius:var(--r);padding:64px 48px;background:radial-gradient(120% 120% at 50% 0%,var(--accent-soft) 0%,transparent 58%)">
+        <div style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(74,222,128,.45);color:var(--ok);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;font-size:1.1rem" data-pulse>&#10003;</div>
+        <h2 style="font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:600;letter-spacing:-.035em;margin-bottom:14px">Solicitud recibida</h2>
+        <p id="conf-product" style="font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px"></p>
+        <p style="color:var(--muted);font-size:1rem;font-weight:300;line-height:1.75;text-wrap:pretty;margin-bottom:32px">Nuestro equipo se pondrá en contacto contigo en las próximas horas para completar el pago y coordinar la entrega e instalación de tu software.</p>
+        <div data-cta-row style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="x10" data-btn data-inv id="conf-whatsapp" href="https://wa.me/593983760090" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 26px;border-radius:var(--r);font-weight:500;font-size:.9rem;background:var(--text);color:var(--bg);border:1px solid var(--text);white-space:nowrap;transition:background .2s var(--eo),transform .2s var(--eo),box-shadow .35s var(--eo)">Enviar pedido por WhatsApp <span data-arrow>&#8594;</span></a>
+          <a class="x9" data-btn href="index.html" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 24px;border-radius:var(--r);font-weight:500;font-size:.9rem;color:var(--text);border:1px solid var(--border-strong);white-space:nowrap;transition:background .2s var(--eo),border-color .2s var(--eo),transform .2s var(--eo)">Volver al inicio</a>
+        </div>
       </div>
-
-      <div class="pay-panel" id="panel-payphone">
-        <h3>📲 Pago con Payphone</h3>
-        <p class="instructions">Te pondremos en contacto con los desarrolladores para recibir una solicitud de cobro al confirmar.</p>
-        <!-- TODO: integrar Payphone aquí (Cajita de Pagos / API con token real del comercio). -->
-          <a class="channel" href="https://wa.me/593983760090" target="_blank" rel="noopener">
-            <span>WhatsApp<small>[+593 983760090]</small></span>
-          </a>
       </div>
+    </section>
 
-      <div class="pay-panel" id="panel-transfer">
-        <h3>🏦 Transferencia bancaria local</h3>
-        <p class="instructions">Te pondremos en contacto con nuestros desarrolladores para proporcionarte los datos de transferencia. 
-          <strong>Tu licencia se activa al confirmar el pago.</strong></p>
-        <div class="bank-details">
-          <!-- Placeholders: reemplazar con los datos bancarios reales de T.O.Q -->
-          <a class="channel" href="https://wa.me/593983760090" target="_blank" rel="noopener">
-            <span>WhatsApp<small>[+593 983760090]</small></span>
-          </a>
+  </main>
+
+  <footer style="border-top:1px solid var(--border);background:var(--bg);padding:78px 0 34px;position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:58%;perspective:340px;pointer-events:none;opacity:.5">
+      <div style="position:absolute;left:-60%;right:-60%;top:0;height:220%;transform:rotateX(80deg);transform-origin:50% 0;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000,transparent 55%);mask-image:linear-gradient(180deg,#000,transparent 55%)">
+        <div style="position:absolute;left:0;right:0;top:-90px;bottom:-90px;background-image:linear-gradient(var(--accent-line) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:90px 90px;animation:toqFloor 5.6s linear infinite;will-change:transform"></div>
       </div>
-
-      <!-- Confirmar -->
-      <p class="form-error" id="select-method-hint" style="text-align:center; margin-bottom: 12px;">Selecciona un método de pago para continuar.</p>
-      <button class="btn btn-primary btn-block" id="confirm-purchase" style="font-size: 1.05rem; padding: 16px;">Confirmar compra</button>
-      <p class="secure-note" style="margin-top: 18px;"><span class="lock">🔒</span> Pagos procesados de forma segura · Sin cargos ocultos</p>
     </div>
-
-    <!-- ===== Pantalla de confirmación (sin pasarela real conectada) ===== -->
-    <div class="confirmation" id="confirmation">
-      <div class="check">✓</div>
-      <h2>Solicitud recibida</h2>
-      <p><strong id="conf-product" style="color: var(--text);"></strong></p>
-      <p>Nuestro equipo se pondrá en contacto contigo en las próximas horas para completar el pago y coordinar la entrega e instalación de tu software.</p>
-      <a href="#" id="conf-whatsapp" class="btn btn-primary" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
-      <a href="index.html" class="btn btn-ghost">Volver al inicio</a>
-    </div>
-
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="brand">T<span class="dot">.</span>O<span class="dot">.</span>Q</a>
-        <p style="margin-top:14px;">Desarrollo de software personalizado para individuos y empresas. Transforma o Quiebra.</p>
+    <div aria-hidden="true" style="position:absolute;left:50%;bottom:-6%;transform:translateX(-50%) perspective(700px) rotateX(24deg);font-size:clamp(7rem,26vw,20rem);font-weight:800;letter-spacing:-.05em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.05);pointer-events:none;user-select:none;white-space:nowrap">T.O.Q</div>
+    <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px;position:relative">
+      <div data-split style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:38px;margin-bottom:40px">
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .7s var(--eo),transform .7s var(--eo)">
+          <a href="index.html" style="font-weight:800;font-size:1.18rem;letter-spacing:.06em;color:var(--text)">T<span style="color:var(--accent)">.</span>O<span style="color:var(--accent)">.</span>Q</a>
+          <p style="margin-top:14px;color:var(--muted);font-size:.89rem;max-width:300px;font-weight:300;line-height:1.7">Desarrollo de software personalizado para individuos y empresas. Transforma o Quiebra.</p>
+        </div>
+        <div data-reveal data-d="90" style="opacity:0;transform:translateY(20px);transition:opacity .7s var(--eo),transform .7s var(--eo)">
+          <h4 style="font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:16px;font-weight:500">Empresa</h4>
+          <ul style="display:grid;gap:10px">
+            <li><a data-flink href="sobre-nosotros.html" style="color:var(--muted);font-size:.89rem">Sobre nosotros</a></li>
+            <li><a data-flink href="mision-vision.html" style="color:var(--muted);font-size:.89rem">Misión y Visión</a></li>
+            <li><a data-flink href="tienda.html" style="color:var(--muted);font-size:.89rem">Tienda</a></li>
+            <li><a data-flink href="index.html#contacto" style="color:var(--muted);font-size:.89rem">Contacto</a></li>
+          </ul>
+        </div>
+        <div data-reveal data-d="170" style="opacity:0;transform:translateY(20px);transition:opacity .7s var(--eo),transform .7s var(--eo)">
+          <h4 style="font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:16px;font-weight:500">Legal</h4>
+          <ul style="display:grid;gap:10px">
+            <li><a data-flink href="terminos-condiciones.html" style="color:var(--muted);font-size:.89rem">Términos y condiciones</a></li>
+            <li><a data-flink href="politica-privacidad.html" style="color:var(--muted);font-size:.89rem">Política de privacidad</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h4>Empresa</h4>
-        <ul>
-          <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
-          <li><a href="mision-vision.html">Misión y Visión</a></li>
-          <li><a href="tienda.html">Tienda</a></li>
-          <li><a href="index.html#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="terminos-condiciones.html">Términos y condiciones</a></li>
-          <li><a href="politica-privacidad.html">Política de privacidad</a></li>
-        </ul>
+      <div style="border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.8rem">
+        <span>© <span data-year>2026</span> T.O.Q · Transforma O Quiebra. Todos los derechos reservados.</span>
+        <span>Hecho con código, no con plantillas.</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-year></span> T.O.Q — Transforma O Quiebra. Todos los derechos reservados.</span>
-      <span>Hecho con código, no con plantillas.</span>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="js/main.js"></script>
-<script src="js/checkout.js"></script>
+</div>
+<script src="js/main.js" defer></script>
+<script src="js/checkout.js" defer></script>
 </body>
 </html>

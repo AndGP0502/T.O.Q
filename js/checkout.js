@@ -1,185 +1,146 @@
-/* T.O.Q — checkout.js · Resumen de compra, carrusel de métodos de pago y confirmación.
-   NOTA IMPORTANTE: este checkout es una interfaz de FRONTEND. El procesamiento real
-   de pagos (Stripe, PayPal, Payphone, pasarela bancaria) queda como INTEGRACIÓN
-   PENDIENTE — ver los TODO marcados abajo. No hay claves API ni transacciones reales. */
+/* ============================================================
+   T.O.Q — checkout.js
+   Catálogo, selección de método de pago y confirmación del pedido.
+   Vanilla JS. Sin dependencias, sin build.
+   ============================================================ */
 (function () {
   "use strict";
 
-  /* ---------- Configuración (editable) ---------- */
-  var WHATSAPP = "593983760090";
+  var WA = "593983760090";
 
-  /* ---------- Catálogo (editable) ---------- */
-  var PRODUCTS = {
-    prosperly: {
-      name: "Prosperly",
-      desc: "Prospección y scraping de leads para Latinoamérica",
-      label: "$0 - $55/mes USD · suscripción"
+  /* Catálogo: la clave es el slug de checkout.html?producto=<slug> */
+  var CATALOGO = {
+    "obtenya": {
+      nombre: "ObtenYA",
+      desc: "Prospección y scraping con IA para toda Latinoamérica",
+      total: '$0 · $25 · $65 <span style="font-size:.72rem;color:var(--muted);font-weight:300;letter-spacing:0">/mes USD</span>',
+      nota: "Suscripción · empieza gratis",
+      logo: "assets/img/productos/obtenya/obtenya-logo.png"
     },
     "medicore-clinicas": {
-      name: "Medicore",
-      desc: "Administración para clínicas pequeñas y medianas",
-      label: "$25 - $55/mes USD · suscripción"
+      nombre: "Medicore",
+      desc: "Administración para clínicas: pacientes, citas, historiales y facturación",
+      total: '$25 – $55 <span style="font-size:.72rem;color:var(--muted);font-weight:300;letter-spacing:0">/mes USD</span>',
+      nota: "Suscripción mensual",
+      logo: "assets/img/productos/medicore/medicore-logo.png"
     },
     "gym-system": {
-      name: "Gym System",
-      desc: "Software de gestión integral para gimnasios",
-      label: "$150 - $300 USD · pago único"
+      nombre: "Gym System",
+      desc: "Gestión integral para gimnasios con facturación conectada al SRI",
+      total: '$150 – $300 <span style="font-size:.72rem;color:var(--muted);font-weight:300;letter-spacing:0">USD</span>',
+      nota: "Pago único · licencia",
+      logo: "assets/img/productos/gym/gym-system-logo.png"
     },
     "portales-web": {
-      name: "Portales Web",
-      desc: "Portal web completo tipo tienda digital, listo para operar",
-      label: "[PRECIO A DEFINIR]"
+      nombre: "Portales Web",
+      desc: "Tienda digital completa con catálogo, panel de administración y pagos",
+      total: "Previa cotización",
+      nota: "Según proyecto",
+      logo: "assets/img/productos/portales-web/portales-web-logo.png"
     },
     "software-medida": {
-      name: "Software a medida",
-      desc: "Proyecto personalizado — precio final según cotización",
-      label: "A cotizar"
+      nombre: "Software a medida",
+      desc: "Desarrollo desde cero según los procesos de tu operación",
+      total: "A cotizar",
+      nota: "Según alcance",
+      logo: ""
     }
   };
-  PRODUCTS.medicore = PRODUCTS["gym-system"]; // alias de enlaces antiguos
 
-  var METHOD_NAMES = {
-    card: "Tarjeta de crédito/débito",
-    paypal: "PayPal",
+  var METODOS = {
+    card: "Tarjeta de crédito o débito",
     payphone: "Payphone",
     transfer: "Transferencia bancaria",
-    wallet: "Billetera digital",
-    crypto: "Criptomonedas"
   };
 
-  /* ---------- Resumen de compra según ?producto= ---------- */
-  var params = new URLSearchParams(location.search);
-  var slug = params.get("producto");
-  if (!slug) {
-    try { slug = localStorage.getItem("toq-producto"); } catch (e) {}
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------- Producto desde la URL ---------- */
+  var slug = "";
+  try { slug = new URLSearchParams(window.location.search).get("producto") || ""; } catch (e) {}
+  var prod = CATALOGO[slug] || {
+    nombre: "Software T.O.Q",
+    desc: "Cuéntanos qué necesitas y armamos el alcance contigo",
+    total: "A cotizar",
+    nota: "Según alcance",
+    logo: ""
+  };
+
+  var elName = $("#order-name"), elDesc = $("#order-desc"), elTotal = $("#order-total"),
+      elNote = $("#order-note"), elLogo = $("#order-logo");
+  if (elName) elName.textContent = prod.nombre;
+  if (elDesc) elDesc.textContent = prod.desc;
+  if (elTotal) elTotal.innerHTML = prod.total;
+  if (elNote) elNote.textContent = prod.nota;
+  if (elLogo) {
+    if (prod.logo) { elLogo.src = prod.logo; elLogo.alt = prod.nombre; }
+    else elLogo.style.display = "none";
   }
-  var product = PRODUCTS[slug] || PRODUCTS.medicore;
+  document.title = prod.nombre + " — Checkout T.O.Q";
 
-  var nameEl = document.getElementById("order-name");
-  var descEl = document.getElementById("order-desc");
-  var priceEl = document.getElementById("order-price");
-  var totalEl = document.getElementById("order-total");
+  /* ---------- Selección de método ---------- */
+  var metodo = null;
+  var cards = $$("[data-pay]");
+  var panels = $$("[data-panel]");
+  var hint = $("[data-hint]");
 
-  var priceLabel = product.label;
-
-  if (nameEl) nameEl.textContent = product.name;
-  if (descEl) descEl.textContent = product.desc;
-  if (priceEl) priceEl.textContent = priceLabel;
-  if (totalEl) totalEl.textContent = priceLabel;
-
-  /* ---------- Carrusel de métodos de pago ---------- */
-  var carousel = document.getElementById("pay-carousel");
-  var prevBtn = document.getElementById("carousel-prev");
-  var nextBtn = document.getElementById("carousel-next");
-
-  function scrollStep() {
-    var card = carousel.querySelector(".pay-card");
-    return card ? card.offsetWidth + 16 : 200;
-  }
-  if (prevBtn && nextBtn && carousel) {
-    prevBtn.addEventListener("click", function () {
-      carousel.scrollBy({ left: -scrollStep(), behavior: "smooth" });
+  function seleccionar(m) {
+    metodo = m;
+    cards.forEach(function (c) {
+      var on = c.getAttribute("data-method") === m;
+      if (on) c.setAttribute("data-on", ""); else c.removeAttribute("data-on");
+      var chk = $("[data-checkmark]", c);
+      if (chk) chk.style.opacity = on ? "1" : "0";
     });
-    nextBtn.addEventListener("click", function () {
-      carousel.scrollBy({ left: scrollStep(), behavior: "smooth" });
+    panels.forEach(function (p) {
+      if (p.id === "panel-" + m) p.setAttribute("data-on", ""); else p.removeAttribute("data-on");
     });
+    if (hint) hint.removeAttribute("data-on");
   }
 
-  /* ---------- Selección de método → panel ---------- */
-  var cards = document.querySelectorAll(".pay-card");
-  var panels = document.querySelectorAll(".pay-panel");
-
-  cards.forEach(function (card) {
-    card.addEventListener("click", function () {
-      if (card.classList.contains("disabled")) return;
-
-      cards.forEach(function (c) { c.classList.remove("selected"); });
-      card.classList.add("selected");
-
-      var target = card.getAttribute("data-method");
-      panels.forEach(function (p) {
-        p.classList.toggle("active", p.id === "panel-" + target);
-      });
-
-      var activePanel = document.getElementById("panel-" + target);
-      if (activePanel) {
-        activePanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }
-    });
-  });
-
-  /* ---------- Validación ligera del formulario de tarjeta (solo UI) ---------- */
-  var cardForm = document.getElementById("card-form");
-  if (cardForm) {
-    cardForm.addEventListener("submit", function (e) {
+  cards.forEach(function (c) {
+    if (c.hasAttribute("data-off")) return;
+    c.addEventListener("click", function () { seleccionar(c.getAttribute("data-method")); });
+    c.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" && e.key !== " ") return;
       e.preventDefault();
-      // TODO: integrar API key real de Stripe aquí (Stripe Elements / Checkout).
-      // Los datos de tarjeta NUNCA deben procesarse ni almacenarse en este frontend;
-      // la tokenización debe hacerla la pasarela (Stripe/Payphone) con credenciales
-      // reales del cliente. Este formulario es solo maqueta de UI.
-      confirmOrder();
-    });
-  }
-
-  /* ---------- Botones de redirección (PayPal / Payphone) ---------- */
-  // TODO: integrar PayPal aquí (SDK de PayPal Buttons con client-id real).
-  // TODO: integrar Payphone aquí (Cajita de Pagos / API con token real del comercio).
-  document.querySelectorAll("[data-gateway-pending]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      confirmOrder();
+      c.click();
     });
   });
 
-  /* ---------- Confirmar compra (sin pasarela conectada) ---------- */
-  var confirmBtn = document.getElementById("confirm-purchase");
-  if (confirmBtn) {
-    confirmBtn.addEventListener("click", function () {
-      var selected = document.querySelector(".pay-card.selected");
-      var hint = document.getElementById("select-method-hint");
-      if (!selected) {
-        if (hint) {
-          hint.style.display = "block";
-          setTimeout(function () { hint.style.display = "none"; }, 4000);
-        }
+  /* ---------- Confirmar pedido ---------- */
+  var btn = $("#confirm-purchase");
+  var main = $("#checkout-main");
+  var conf = $("#confirmation");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      if (!metodo) {
+        if (hint) hint.setAttribute("data-on", "");
+        var grid = $("[data-paygrid]");
+        if (grid) window.scrollTo({ top: grid.getBoundingClientRect().top + window.pageYOffset - 120, behavior: "smooth" });
         return;
       }
-      confirmOrder();
+
+      /* TODO backend/pasarela: aquí se dispara el cobro real.
+         Tarjeta  -> Stripe Elements / PaymentIntent con la clave del comercio.
+         PayPal   -> SDK de PayPal Buttons con el client-id real.
+         Payphone -> Cajita de Pagos / API con el token del comercio.
+         Mientras no exista pasarela conectada, se registra la solicitud
+         y se deriva el cierre del pago a WhatsApp. */
+
+      var texto = "Hola T.O.Q, quiero comprar " + prod.nombre +
+        " (" + (METODOS[metodo] || metodo) + "). Referencia: " + (slug || "sin-slug") + ".";
+      var wa = $("#conf-whatsapp");
+      if (wa) wa.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(texto);
+      var cp = $("#conf-product");
+      if (cp) cp.textContent = prod.nombre + " · " + (METODOS[metodo] || metodo);
+
+      if (main) main.style.display = "none";
+      if (conf) conf.setAttribute("data-on", "");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  /* ---------- Aviso por WhatsApp al equipo T.O.Q ----------
-     Abre WhatsApp con el pedido prellenado (producto, precio y método elegido).
-     El cliente solo pulsa "enviar". Un envío 100% automático sin intervención
-     requiere backend con WhatsApp Business API.
-     TODO: si se integra WhatsApp Business API, llamar aquí al endpoint propio. */
-  function metodoSeleccionado() {
-    var sel = document.querySelector(".pay-card.selected");
-    var key = sel ? sel.getAttribute("data-method") : null;
-    return METHOD_NAMES[key] || "No especificado";
-  }
 
-  function mensajePedido() {
-    var msg =
-      "Hola T.O.Q, quiero completar una compra.\n\n" +
-      "Producto: " + product.name + "\n" +
-      "Precio: " + priceLabel + "\n" +
-      "Método de pago: " + metodoSeleccionado() + "\n\n" +
-      "Quedo atento para finalizar el pago.";
-    return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
-  }
-
-  function confirmOrder() {
-    var url = mensajePedido();
-    window.open(url, "_blank", "noopener");
-    var waBtn = document.getElementById("conf-whatsapp");
-    if (waBtn) waBtn.href = url; // respaldo si el navegador bloquea la ventana
-    // Sin pasarela real conectada: se registra la solicitud y el equipo
-    // de T.O.Q contacta al cliente para completar el pago.
-    document.getElementById("checkout-main").style.display = "none";
-    var conf = document.getElementById("confirmation");
-    conf.classList.add("active");
-    var confProduct = document.getElementById("conf-product");
-    if (confProduct) confProduct.textContent = product.name + " — " + priceLabel;
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
 })();
