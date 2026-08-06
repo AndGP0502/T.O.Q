@@ -222,14 +222,17 @@
       setErr("mensaje", bad[2]);
       if (bad[0] || bad[1] || bad[2]) return;
 
-      /* TODO backend: enviar { name, mail, msg } al endpoint propio.
-         Ejemplo:
-         fetch("/api/contacto", {
-           method: "POST",
-           headers: { "Content-Type": "application/json" },
-           body: JSON.stringify({ nombre: name, email: mail, mensaje: msg })
-         }).then(...)
-         Mientras no exista backend, se simula el envío. */
+      /* Envío por WhatsApp (Click to Chat): abre WhatsApp con el mensaje ya
+         escrito; el visitante solo pulsa enviar. Gratis, sin backend ni API.
+         window.open va aquí, dentro del gesto de envío, para que no lo bloquee
+         el navegador como popup. */
+      var texto =
+        "Hola T.O.Q, soy " + name + " (" + mail + ").\n\nMi proyecto:\n" + msg;
+      window.open(
+        "https://wa.me/593983760090?text=" + encodeURIComponent(texto),
+        "_blank", "noopener"
+      );
+
       if (spinner) spinner.setAttribute("data-on", "");
       if (okBox) okBox.removeAttribute("data-on");
       setTimeout(function () {
@@ -237,7 +240,7 @@
         if (spinner) spinner.removeAttribute("data-on");
         if (okBox) okBox.setAttribute("data-on", "");
         setTimeout(function () { if (okBox) okBox.removeAttribute("data-on"); }, 6000);
-      }, 900);
+      }, 700);
     });
   }
 
