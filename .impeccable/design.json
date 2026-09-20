@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-19T00:00:00.000Z",
+  "title": "Design System: T.O.Q — Transforma o Quiebra",
+  "extensions": {
+    "colorMeta": {
+      "signal-blue": { "role": "primary", "displayName": "Signal Blue", "canonical": "#3b82f6" },
+      "signal-blue-wash": { "role": "primary-state", "displayName": "Signal Blue Wash", "canonical": "rgba(59, 130, 246, 0.16)" },
+      "signal-blue-line": { "role": "primary-state", "displayName": "Signal Blue Line", "canonical": "rgba(59, 130, 246, 0.32)" },
+      "near-black": { "role": "neutral", "displayName": "Near-Black", "canonical": "#08090b", "tonalRamp": ["#08090b", "#0c0e11", "#14161b", "#1e2127", "#2c3038", "#40454f", "#5a606c", "#8d949e"] },
+      "panel-black": { "role": "neutral", "displayName": "Panel Black", "canonical": "#0c0e11" },
+      "paper-white": { "role": "neutral", "displayName": "Paper White", "canonical": "#f2f4f7", "tonalRamp": ["#f2f4f7", "#e4e7ec", "#c8ccd4", "#a8adb8", "#8d949e", "#6b7280", "#454b54", "#25282d"] },
+      "slate": { "role": "neutral", "displayName": "Slate", "canonical": "#8d949e" },
+      "hairline": { "role": "border", "displayName": "Hairline", "canonical": "rgba(255, 255, 255, 0.10)" },
+      "hairline-strong": { "role": "border", "displayName": "Hairline Strong", "canonical": "rgba(255, 255, 255, 0.22)" },
+      "live-green": { "role": "status-success", "displayName": "Live Green", "canonical": "#4ade80" },
+      "alert-red": { "role": "status-error", "displayName": "Alert Red", "canonical": "#f87171" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines and page H1s only." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Card, product, and person names within a section." },
+      "body": { "displayName": "Body", "purpose": "All reading copy, capped around 58-72ch." },
+      "label": { "displayName": "Label", "purpose": "Mono eyebrow kickers, nav items, field labels, price-unit suffixes, badges." }
+    },
+    "shadows": [
+      { "name": "button-lift", "value": "0 16px 38px -14px rgba(255, 255, 255, 0.42)", "purpose": "Direct hover feedback on the primary (inverted) button only." },
+      { "name": "focus-ring", "value": "0 0 0 3px var(--accent-soft)", "purpose": "Input focus state — the one legitimate 'glow', because it marks a real focus event." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Default deceleration easing for reveals and interaction feedback (--eo)." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Symmetric easing reserved for looping/ambient effects (--eio) — use sparingly per the Flat-By-Default and Purposeful Motion direction." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "920px" },
+      { "name": "mobile", "value": "640px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Inverted fill CTA — main conversion action ('Hablemos de tu proyecto', 'Confirmar compra').",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Hablemos de tu proyecto <span class=\"ds-btn-arrow\">&#8594;</span></button>",
+      "css": ".ds-btn-primary{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:4px;font-family:Inter,sans-serif;font-weight:500;font-size:.92rem;background:#f2f4f7;color:#08090b;border:1px solid #f2f4f7;cursor:pointer;transition:background .2s cubic-bezier(.23,1,.32,1),transform .2s cubic-bezier(.23,1,.32,1),box-shadow .35s cubic-bezier(.23,1,.32,1)}.ds-btn-primary::after{content:\"\";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(8,9,11,.14) 50%,transparent 62%);transform:translateX(-135%);transition:transform .75s cubic-bezier(.23,1,.32,1);pointer-events:none;z-index:2}.ds-btn-primary:hover{background:#ffffff;box-shadow:0 16px 38px -14px rgba(255,255,255,.42)}.ds-btn-primary:hover::after{transform:translateX(135%)}.ds-btn-primary:active{transform:scale(.97)}.ds-btn-arrow{display:inline-block;transition:transform .3s cubic-bezier(.23,1,.32,1)}.ds-btn-primary:hover .ds-btn-arrow{transform:translateX(5px)}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline ghost CTA — secondary action ('Ver productos', 'Volver al inicio').",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">Ver productos</button>",
+      "css": ".ds-btn-secondary{display:inline-block;padding:14px 30px;border-radius:4px;font-family:Inter,sans-serif;font-weight:500;font-size:.92rem;background:transparent;color:#f2f4f7;border:1px solid rgba(255,255,255,.22);cursor:pointer;transition:background .2s cubic-bezier(.23,1,.32,1),border-color .2s cubic-bezier(.23,1,.32,1),transform .2s cubic-bezier(.23,1,.32,1)}.ds-btn-secondary:hover{background:rgba(255,255,255,.06);border-color:#f2f4f7;transform:translateY(-2px)}.ds-btn-secondary:active{transform:scale(.97)}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form field with mono uppercase label above and inline error state below.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-name\">Nombre</label><input class=\"ds-field-input\" id=\"ds-name\" type=\"text\"><span class=\"ds-field-error\">Ingresa tu nombre.</span></div>",
+      "css": ".ds-field-label{display:block;font-family:'JetBrains Mono',monospace;font-size:.64rem;color:#8d949e;margin-bottom:9px;letter-spacing:.14em;text-transform:uppercase}.ds-field-input{width:100%;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.10);border-radius:4px;color:#f2f4f7;padding:13px 16px;font-family:Inter,sans-serif;font-size:.95rem;font-weight:300;transition:border-color .25s cubic-bezier(.23,1,.32,1),background .25s cubic-bezier(.23,1,.32,1),box-shadow .25s cubic-bezier(.23,1,.32,1)}.ds-field-input:focus-visible{outline:none;border-color:#f2f4f7;background:rgba(255,255,255,.03);box-shadow:0 0 0 3px rgba(59,130,246,.16)}.ds-field-error{color:#f87171;font-size:.78rem;margin-top:6px;display:block}"
+    },
+    {
+      "name": "Label Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Mono uppercase status/category marker, e.g. 'Producto insignia'.",
+      "html": "<span class=\"ds-badge\">Producto insignia</span>",
+      "css": ".ds-badge{font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#8d949e;border:1px solid rgba(255,255,255,.10);border-radius:4px;padding:6px 12px;display:inline-block;background:transparent}"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Restrained card for a single discrete item (a product, a person, a contact channel) — no glare sweep, no accent-soft glow, per the target direction.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">ObtenYA</h3><p class=\"ds-card-body\">Prospección y scraping con IA para toda Latinoamérica.</p></article>",
+      "css": ".ds-card{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.10);border-radius:4px;background:transparent;padding:26px;transition:border-color .3s cubic-bezier(.23,1,.32,1),background .3s cubic-bezier(.23,1,.32,1)}.ds-card:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.02)}.ds-card-title{font-family:Inter,sans-serif;font-size:1.18rem;font-weight:600;letter-spacing:-.024em;margin-bottom:12px;color:#f2f4f7}.ds-card-body{font-family:Inter,sans-serif;color:#8d949e;font-size:.91rem;font-weight:300;line-height:1.7}"
+    },
+    {
+      "name": "Live Status Pulse",
+      "kind": "custom",
+      "refersTo": "status-indicator",
+      "description": "Small pulsing dot marking a real-time/live fact (e.g. 'En vivo · obtenya.lat'). The one place ambient-feeling motion is justified because it represents a true real-time state.",
+      "html": "<span class=\"ds-pulse\" aria-hidden=\"true\"></span>",
+      "css": ".ds-pulse{position:relative;display:inline-block;width:6px;height:6px;border-radius:9999px;background:#4ade80;animation:ds-pulse 2.1s cubic-bezier(.23,1,.32,1) infinite}@keyframes ds-pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header nav link with thin Signal Blue underline on hover/active — no pill background.",
+      "html": "<a class=\"ds-navlink\" href=\"#\">Servicios</a>",
+      "css": ".ds-navlink{position:relative;font-family:Inter,sans-serif;font-size:.9rem;color:#8d949e;text-decoration:none;transition:color .2s ease}.ds-navlink::after{content:\"\";position:absolute;left:0;bottom:-7px;height:1px;width:100%;background:#3b82f6;transform:scaleX(0);transform-origin:0 50%;transition:transform .32s cubic-bezier(.23,1,.32,1)}.ds-navlink:hover{color:#f2f4f7}.ds-navlink:hover::after,.ds-navlink.ds-on::after{transform:scaleX(1)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blueprint Room",
+    "overview": "Not a sci-fi command deck — an actual draftsman's studio. A blueprint is dark paper with precise white lines: nothing on it is decorative, every mark measures or annotates something real. That's the discipline this system borrows: strong typographic hierarchy, generous whitespace, a single accent color used the way a draftsman's red pencil is used — rarely, and only to mark what matters. Grid lines, hairline borders, and mono-font annotations (\"// Servicios\", \"01 · Misión\") are the blueprint's own vocabulary; they stay. What doesn't belong in a blueprint — ambient glow, atmospheric gradients, decoration that doesn't measure anything — doesn't belong here either.\n\nT.O.Q builds real software for real businesses (\"hecho con código, no con plantillas\" — made with code, not templates), and the design has to prove that claim rather than contradict it. The system is technological, modern, and premium, but sober: it earns \"premium\" through restraint and precision, not through visual noise. It is explicitly not a generic SaaS template — no floating gradient blobs, no icons parked in soft rounded chips, no purple-to-blue glow washes, no motion that plays for its own sake. If an element doesn't communicate something (a real product, a real number, a state change), it doesn't ship.",
+    "keyCharacteristics": [
+      "Near-black canvas, paper-white type, one blue accent spent sparingly",
+      "Mono-font labels function as technical annotations, not typographic flourish",
+      "Editorial composition — type hierarchy and whitespace carry weight, not containers",
+      "Motion is feedback (scroll reveal, hover, loading, live status), never ambience",
+      "Real product screenshots and real people are the imagery; nothing is stock or decorative"
+    ],
+    "rules": [
+      { "name": "The Signal Rule", "body": "Signal Blue appears for exactly one reason at a time: to mark something live, active, focused, or clickable. It never fills a background as an atmospheric wash. If a surface needs to feel \"premium,\" reach for whitespace and hairline borders before reaching for blue.", "section": "colors" },
+      { "name": "The Annotation Rule", "body": "Mono type is for things that point at content (labels, kickers, units, status text), never for content itself. If a sentence needs to be read for meaning rather than scanned for structure, it's Inter.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces sit flush with the canvas at rest. Shadow and glow are reserved for direct interaction feedback on real controls (buttons, active form fields), never for passive atmosphere.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do spend Signal Blue on exactly one meaningful thing per view: a live indicator, a focus ring, an active nav link, a primary link.",
+      "Do use mono-labeled kickers (// Servicios, 01 · Misión) as the system's signature annotation device — they're the blueprint voice.",
+      "Do let real product screenshots and real team photos carry visual interest; they are evidence the software is real.",
+      "Do keep interaction feedback that responds to the user (button sheen, press-scale, hover lift, focus ring) — that's purposeful motion.",
+      "Do default to whitespace and type hierarchy before reaching for a bordered container."
+    ],
+    "donts": [
+      "Don't wash a section background in an accent-soft (or any) radial glow for atmosphere. Blue marks meaning, not mood.",
+      "Don't wrap every content block in a bordered card by default — reserve cards for single, nameable, genuinely discrete things.",
+      "Don't put icons inside soft rounded color chips as decoration; if an icon is needed, set it inline at a fixed small size with no container.",
+      "Don't run ambient background motion that isn't tied to a real state — no drifting \"aurora\" blobs, no auto-rotating orbit rings, no animated 3D floor/ceiling grid planes.",
+      "Don't apply a hover \"glare\" sweep to every card by default — reserve shine/glow effects for the primary CTA only, where it's rare enough to mean something.",
+      "Don't reach for purple or multi-hue gradients; this system has exactly one accent hue."
+    ]
+  }
+}
