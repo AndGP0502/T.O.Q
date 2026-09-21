@@ -25,9 +25,9 @@ a:hover{color:var(--text)}
 :focus-visible{outline:1px solid var(--text);outline-offset:3px}
 section[id]{scroll-margin-top:86px}
 [data-btn]{position:relative;overflow:hidden;isolation:isolate}
-[data-btn]::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.20) 50%,transparent 62%);transform:translateX(-135%);transition:transform .75s var(--eo);pointer-events:none;z-index:2}
-[data-btn]:hover::after{transform:translateX(135%)}
-[data-btn][data-inv]::after{background:linear-gradient(105deg,transparent 38%,rgba(8,9,11,.14) 50%,transparent 62%)}
+[data-btn][data-shine]::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.20) 50%,transparent 62%);transform:translateX(-135%);transition:transform .26s var(--eo);pointer-events:none;z-index:2}
+[data-btn][data-shine]:hover::after{transform:translateX(135%)}
+[data-btn][data-shine][data-inv]::after{background:linear-gradient(105deg,transparent 38%,rgba(8,9,11,.14) 50%,transparent 62%)}
 [data-arrow]{display:inline-block;transition:transform .3s var(--eo)}
 [data-btn]:hover [data-arrow]{transform:translateX(5px)}
 [data-zoom]{transition:transform .8s var(--eo)}
@@ -72,8 +72,8 @@ section[id]{scroll-margin-top:86px}
 [data-glare]{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s var(--eo);z-index:3;mix-blend-mode:screen}
 [data-card]:hover [data-glare],[data-frame]:hover [data-glare]{opacity:1}
 [data-depth]{transition:opacity .5s var(--eo)}
-[data-lift]{transition:transform .5s var(--eo),filter .45s var(--eo),border-color .45s var(--eo)}
-[data-card]:hover [data-lift]{transform:translateZ(30px) scale(1.03)}
+[data-lift]{transition:transform .3s var(--eo),filter .45s var(--eo),border-color .45s var(--eo)}
+[data-card]:hover [data-lift]{transform:scale(1.05)}
 [data-card]:hover [data-parallax]{transform:translateZ(26px)}
 [data-parallax]{transition:transform .55s var(--eo)}
 [data-word]{will-change:transform,opacity}

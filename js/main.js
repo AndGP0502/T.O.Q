@@ -12,15 +12,6 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  function rgba(hex, a) {
-    var h = String(hex).replace("#", "");
-    if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
-    var v = parseInt(h, 16);
-    if (isNaN(v)) return "rgba(59,130,246," + a + ")";
-    return "rgba(" + ((v >> 16) & 255) + "," + ((v >> 8) & 255) + "," + (v & 255) + "," + a + ")";
-  }
-  var ACCENT = (getComputedStyle(document.documentElement).getPropertyValue("--accent") || "#3b82f6").trim();
-
   /* ---------- Año en el footer ---------- */
   var yearEl = $("[data-year]");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -79,31 +70,6 @@
     }, { threshold: 0 }).observe(sentinel);
   }
 
-  /* ---------- Hero: resplandor que sigue al puntero + wordmark 3D ---------- */
-  var hero = $("[data-hero]");
-  var glow = $("[data-glow]");
-  var word = $("[data-word3d]");
-  if (hero && !motionOff) {
-    var raf = null;
-    hero.addEventListener("pointermove", function (e) {
-      var r = hero.getBoundingClientRect();
-      var x = e.clientX - r.left, y = e.clientY - r.top;
-      var nx = x / r.width - 0.5, ny = y / r.height - 0.5;
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(function () {
-        if (glow) {
-          glow.style.opacity = "1";
-          glow.style.transform = "translate3d(" + x + "px," + y + "px,0)";
-        }
-        if (word) word.style.transform = "rotateY(" + (nx * 11).toFixed(2) + "deg) rotateX(" + (-ny * 7).toFixed(2) + "deg)";
-      });
-    });
-    hero.addEventListener("pointerleave", function () {
-      if (glow) glow.style.opacity = "0";
-      if (word) word.style.transform = "rotateY(0deg) rotateX(0deg)";
-    });
-  }
-
   /* ---------- Botón magnético ---------- */
   $$("[data-magnet]").forEach(function (el) {
     if (motionOff) return;
@@ -114,53 +80,6 @@
       el.style.transform = "translate3d(" + (dx * 7).toFixed(1) + "px," + (dy * 4 - 2).toFixed(1) + "px,0)";
     });
     el.addEventListener("pointerleave", function () { el.style.transform = "translate3d(0,0,0)"; });
-  });
-
-  /* ---------- Marco 3D del producto insignia ---------- */
-  $$("[data-tiltzone]").forEach(function (host) {
-    var stage = $("[data-tilt3d]", host);
-    var frame = $("[data-frame]", host);
-    var glare = frame ? $("[data-glare]", frame) : null;
-    if (!stage || motionOff) return;
-    host.addEventListener("pointermove", function (e) {
-      var r = host.getBoundingClientRect();
-      var px = (e.clientX - r.left) / r.width - 0.5;
-      var py = (e.clientY - r.top) / r.height - 0.5;
-      stage.style.transform = "rotateY(" + (px * 11).toFixed(2) + "deg) rotateX(" + (-py * 9).toFixed(2) + "deg)";
-      if (frame) frame.style.boxShadow = "inset 0 1px 0 rgba(255,255,255,.09),0 14px 32px -12px rgba(0,0,0,.55),0 36px 74px -26px rgba(0,0,0,.6),0 26px 62px -20px " + rgba(ACCENT, 0.22);
-      if (glare) {
-        glare.style.opacity = "1";
-        glare.style.background = "radial-gradient(420px circle at " + ((px + 0.5) * 100).toFixed(1) + "% " + ((py + 0.5) * 100).toFixed(1) + "%, rgba(255,255,255,.12), transparent 45%)";
-      }
-    });
-    host.addEventListener("pointerleave", function () {
-      stage.style.transform = "rotateY(0deg) rotateX(0deg)";
-      if (frame) frame.style.boxShadow = "inset 0 1px 0 rgba(255,255,255,.07),0 10px 26px -10px rgba(0,0,0,.5),0 28px 60px -24px rgba(0,0,0,.55)";
-      if (glare) glare.style.opacity = "0";
-    });
-  });
-
-  /* ---------- Tarjetas: inclinación 3D + reflejo ---------- */
-  $$("[data-card]").forEach(function (el) {
-    if (motionOff) return;
-    var ready = false;
-    el.addEventListener("pointermove", function (e) {
-      if (!el.hasAttribute("data-seen")) return;
-      var r = el.getBoundingClientRect();
-      var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-      if (!ready) {
-        ready = true;
-        el.style.transitionDelay = "0ms";
-        el.style.transitionProperty = "transform,border-color,background,box-shadow,filter,opacity";
-        el.style.transitionDuration = ".3s,.3s,.3s,.45s,.3s,.3s";
-      }
-      el.style.transform = "perspective(1000px) rotateY(" + ((px - 0.5) * 7).toFixed(2) + "deg) rotateX(" + ((0.5 - py) * 6).toFixed(2) + "deg) translateY(-4px)";
-      var g = $("[data-glare]", el);
-      if (g) g.style.background = "radial-gradient(460px circle at " + (px * 100).toFixed(1) + "% " + (py * 100).toFixed(1) + "%, rgba(255,255,255,.10), transparent 44%)";
-    });
-    el.addEventListener("pointerleave", function () {
-      if (ready) el.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)";
-    });
   });
 
   /* ---------- Fundadores: click fija el color ---------- */
