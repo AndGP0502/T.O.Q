@@ -78,6 +78,23 @@ section[id]{scroll-margin-top:86px}
 [data-parallax]{transition:transform .55s var(--eo)}
 [data-word]{will-change:transform,opacity}
 @keyframes toqDraw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+/* --- Servicios ("Software a tu medida"): composición editorial sin cards, solo esta sección --- */
+.svc-heading{font-weight:600;letter-spacing:-.03em;line-height:1.15}
+.svc-heading--lg{font-size:clamp(1.7rem,3.2vw,2.3rem);margin-bottom:14px}
+.svc-heading--sm{font-size:1.05rem;margin-bottom:10px}
+.svc-panel{display:grid;grid-template-columns:1fr auto;column-gap:28px;align-items:start;max-width:640px}
+.svc-mark{display:block;object-fit:contain;width:72px;height:72px}
+.svc-list{display:grid;gap:11px;margin-top:20px;border-left:1px solid var(--border);padding-left:20px}
+.svc-divider{grid-column:1 / -1;position:relative;height:1px;background:var(--border);margin:36px 0}
+.svc-divider::before{content:"";position:absolute;left:0;top:-5px;width:1px;height:11px;background:var(--accent)}
+@media (min-width:921px){
+  .svc-intro{border-right:1px solid var(--border)}
+}
+@media (max-width:920px){
+  .svc-panel{grid-template-columns:1fr}
+  .svc-mark{margin-top:16px}
+}
 @media (max-width:1100px){
   [data-pricebar]{grid-template-columns:1fr!important;gap:18px!important}
   [data-pricebar] > div:last-child{justify-content:flex-start!important}

@@ -119,43 +119,35 @@
       <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px;position:relative">
         <div data-bento style="display:grid;grid-template-columns:repeat(12,1fr);gap:20px;align-items:stretch">
 
-          <div style="grid-column:1 / span 4;display:flex;flex-direction:column;justify-content:center;padding:10px 8px 10px 0">
+          <div class="svc-intro" style="grid-column:1 / span 4;display:flex;flex-direction:column;justify-content:center;padding:10px 28px 10px 0">
             <h2 data-reveal style="font-size:clamp(1.8rem,3.4vw,2.5rem);font-weight:600;letter-spacing:-.036em;line-height:1.06;margin-bottom:18px;opacity:0;transform:translateY(24px);transition:opacity .8s var(--eo),transform .8s var(--eo)">Software a tu medida</h2>
             <p data-reveal data-d="120" style="color:var(--muted);font-size:.97rem;font-weight:300;line-height:1.75;text-wrap:pretty;opacity:0;transform:translateY(20px);transition:opacity .8s var(--eo),transform .8s var(--eo)">Desde una idea personal hasta el sistema central de tu empresa: lo diseñamos, lo construimos y lo mantenemos.</p>
           </div>
 
-          <article class="x7" data-card data-reveal data-d="80" data-featpad style="grid-column:5 / span 8;position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--r);background:transparent;opacity:0;transform:translateY(26px);transition:opacity .8s var(--eo),transform .8s var(--eo),border-color .3s var(--eo),background .3s var(--eo),box-shadow .45s var(--eo);padding:40px 42px">
-            <div data-bentorow style="display:grid;grid-template-columns:1fr 96px;gap:34px;align-items:start">
-              <div>
-                <h3 style="font-size:1.38rem;font-weight:600;letter-spacing:-.026em;margin-bottom:14px">Para individuos y emprendedores</h3>
-                <p style="color:var(--muted);font-size:.95rem;font-weight:300;line-height:1.75;text-wrap:pretty">Aplicaciones, sitios web y herramientas personalizadas para dar vida a tu proyecto sin plantillas genéricas. Ideal para validar ideas y lanzar rápido.</p>
-                <ul style="display:grid;gap:11px;margin-top:24px">
-                  <li data-tick style="position:relative;padding-left:22px;color:var(--muted);font-size:.9rem;font-weight:300">Validación y lanzamiento rápido</li>
-                  <li data-tick style="position:relative;padding-left:22px;color:var(--muted);font-size:.9rem;font-weight:300">Diseño e ingeniería en el mismo equipo</li>
-                </ul>
-              </div>
-              <div style="width:84px;height:84px;justify-self:end">
-                <img data-lift src="assets/img/servicios/individuos.png" alt="" loading="lazy" width="84" height="84" style="width:84px;height:84px;object-fit:contain">
-              </div>
-            </div>
-          </article>
-
-          <article class="x7" data-card data-reveal data-d="190" data-featpad style="grid-column:1 / span 12;position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--r);background:transparent;opacity:0;transform:translateY(26px);transition:opacity .8s var(--eo),transform .8s var(--eo),border-color .3s var(--eo),background .3s var(--eo),box-shadow .45s var(--eo);background:linear-gradient(90deg,rgba(255,255,255,.03),transparent 55%);padding:38px 42px">
-            <div data-bentorow style="display:grid;grid-template-columns:84px 1.1fr 1fr;gap:38px;align-items:center">
-              <div style="width:84px;height:84px">
-                <img data-lift src="assets/img/servicios/empresas.png" alt="" loading="lazy" width="84" height="84" style="width:84px;height:84px;object-fit:contain">
-              </div>
-              <div>
-                <h3 style="font-size:1.38rem;font-weight:600;letter-spacing:-.026em;margin-bottom:12px">Para empresas</h3>
-                <p style="color:var(--muted);font-size:.95rem;font-weight:300;line-height:1.75;text-wrap:pretty">Sistemas de gestión, automatización de procesos e integraciones a la medida de tu operación. Software que crece contigo y tu negocio.</p>
-              </div>
-              <ul style="display:grid;gap:12px;border-left:1px solid var(--border);padding-left:34px">
+          <div class="svc-panel" data-reveal data-d="80" style="grid-column:5 / span 8;opacity:0;transform:translateY(26px);transition:opacity .8s var(--eo),transform .8s var(--eo)">
+            <div data-card>
+              <h3 class="svc-heading svc-heading--lg">Para empresas</h3>
+              <p style="color:var(--muted);font-size:.97rem;font-weight:300;line-height:1.75;text-wrap:pretty;max-width:60ch">Sistemas de gestión, automatización de procesos e integraciones a la medida de tu operación. Software que crece contigo y tu negocio.</p>
+              <ul class="svc-list">
                 <li data-tick style="position:relative;padding-left:22px;color:var(--muted);font-size:.9rem;font-weight:300">Automatización de procesos internos</li>
                 <li data-tick style="position:relative;padding-left:22px;color:var(--muted);font-size:.9rem;font-weight:300">Integraciones con tus sistemas actuales</li>
                 <li data-tick style="position:relative;padding-left:22px;color:var(--muted);font-size:.9rem;font-weight:300">Mantenimiento y soporte continuo</li>
               </ul>
             </div>
-          </article>
+            <img class="svc-mark" src="assets/img/servicios/empresas.png" alt="" loading="lazy" width="72" height="72">
+
+            <div class="svc-divider" aria-hidden="true"></div>
+
+            <div data-card>
+              <h3 class="svc-heading svc-heading--sm">Para individuos y emprendedores</h3>
+              <p style="color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.75;text-wrap:pretty">Aplicaciones, sitios web y herramientas personalizadas para dar vida a tu proyecto sin plantillas genéricas. Ideal para validar ideas y lanzar rápido.</p>
+              <ul class="svc-list">
+                <li data-tick style="position:relative;padding-left:22px;color:var(--muted);font-size:.9rem;font-weight:300">Validación y lanzamiento rápido</li>
+                <li data-tick style="position:relative;padding-left:22px;color:var(--muted);font-size:.9rem;font-weight:300">Diseño e ingeniería en el mismo equipo</li>
+              </ul>
+            </div>
+            <img class="svc-mark" src="assets/img/servicios/individuos.png" alt="" loading="lazy" width="72" height="72">
+          </div>
 
         </div>
       </div>
