@@ -67,8 +67,6 @@ section[id]{scroll-margin-top:86px}
 @keyframes toqGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes toqFlip{from{opacity:0;transform:perspective(900px) rotateX(56deg) translateY(36%);filter:blur(10px)}to{opacity:1;transform:perspective(900px) rotateX(0deg) translateY(0);filter:blur(0)}}
 @keyframes toqFloor{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,90px,0)}}
-@keyframes toqCeil{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-90px,0)}}
-@keyframes toqOrbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 [data-glare]{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s var(--eo);z-index:3;mix-blend-mode:screen}
 [data-card]:hover [data-glare],[data-frame]:hover [data-glare]{opacity:1}
 [data-depth]{transition:opacity .5s var(--eo)}
@@ -77,7 +75,27 @@ section[id]{scroll-margin-top:86px}
 [data-card]:hover [data-parallax]{transform:translateZ(26px)}
 [data-parallax]{transition:transform .55s var(--eo)}
 [data-word]{will-change:transform,opacity}
-@keyframes toqDraw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+/* --- Hero: composición asimétrica T.O.Q + brief, solo esta sección --- */
+.hero-grid{display:grid;grid-template-columns:auto 1fr;column-gap:48px;align-items:center}
+.hero-word{justify-content:flex-start}
+.hero-word-col{width:min(max-content,100%)}
+.hero-tagline{text-align:center}
+.hero-line{margin:30px 0 0}
+.hero-cta-row{justify-content:flex-start}
+.hero-cta-secondary{color:var(--muted);transition:color .2s ease}
+.hero-cta-secondary:hover{color:var(--text)}
+@media (min-width:921px){
+  .hero-mark{border-right:1px solid var(--border);padding-right:32px}
+}
+@media (max-width:920px){
+  .hero-grid{grid-template-columns:1fr;row-gap:40px;text-align:center}
+  .hero-word{justify-content:center}
+  .hero-word-col{margin:0 auto}
+  .hero-line{margin:30px auto 0}
+  .hero-desc{margin-left:auto;margin-right:auto}
+  .hero-cta-row{justify-content:center}
+}
 
 /* --- Servicios ("Software a tu medida"): composición editorial sin cards, solo esta sección --- */
 .svc-heading{font-weight:600;letter-spacing:-.03em;line-height:1.15}
@@ -94,6 +112,18 @@ section[id]{scroll-margin-top:86px}
 @media (max-width:920px){
   .svc-panel{grid-template-columns:1fr}
   .svc-mark{margin-top:16px}
+}
+
+/* --- Contacto: canales integrados + formulario sin card exterior, solo esta sección --- */
+.contact-channels{border-top:1px solid var(--border);margin-top:32px}
+.contact-channel{display:flex;align-items:center;gap:15px;padding:18px 2px;border-bottom:1px solid var(--border);color:var(--text);font-size:.92rem;transition:border-color .25s var(--eo)}
+.contact-channel:hover{border-color:var(--border-strong)}
+.contact-channel:hover [data-lift]{transform:scale(1.05)}
+@media (min-width:921px){
+  .contact-intro{border-right:1px solid var(--border);padding-right:28px}
+}
+@media (max-width:920px){
+  .contact-intro{text-align:center}
 }
 @media (max-width:1100px){
   [data-pricebar]{grid-template-columns:1fr!important;gap:18px!important}
