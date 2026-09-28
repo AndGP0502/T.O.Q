@@ -63,11 +63,25 @@
     document.body.insertBefore(sentinel, document.body.firstChild);
     new IntersectionObserver(function (entries) {
       var top = entries[0].isIntersecting;
-      header.style.background = top ? "rgba(8,9,11,.66)" : "rgba(8,9,11,.9)";
+      header.style.background = top ? "var(--header-bg)" : "var(--header-bg-strong)";
       header.style.borderBottomColor = top ? "var(--border)" : "var(--border-strong)";
       header.style.boxShadow = top ? "none" : "0 12px 34px -26px rgba(0,0,0,.9)";
       nav.style.padding = top ? "16px 26px" : "11px 26px";
     }, { threshold: 0 }).observe(sentinel);
+  }
+
+  /* ---------- Esquema de color por sección (dark ↔ blanco) ---------- */
+  var rootEl = document.documentElement;
+  var schemeSecs = $$("[data-hero],[data-sec]");
+  if (schemeSecs.length && "IntersectionObserver" in window) {
+    var schemeObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          rootEl.setAttribute("data-scheme", e.target.getAttribute("data-scheme") || "dark");
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+    schemeSecs.forEach(function (s) { schemeObs.observe(s); });
   }
 
   /* ---------- Botón magnético ---------- */

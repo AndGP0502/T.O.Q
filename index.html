@@ -16,7 +16,7 @@
 
   <div aria-hidden="true" style="position:fixed;top:0;left:0;right:0;height:2px;z-index:60;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,transparent,var(--accent));animation:toqProgress linear both;animation-timeline:scroll(root);pointer-events:none"></div>
 
-  <header data-header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);background:rgba(8,9,11,.66);border-bottom:1px solid var(--border);transition:background .35s var(--eo),border-color .35s var(--eo)">
+  <header data-header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);background:var(--header-bg);border-bottom:1px solid var(--border);transition:background 1.3s cubic-bezier(.4,0,.2,1),border-color 1.3s cubic-bezier(.4,0,.2,1)">
     <nav data-nav style="max-width:var(--maxw);margin:0 auto;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:relative;transition:padding .35s var(--eo)">
       <a href="index.html" style="font-weight:800;font-size:1.22rem;letter-spacing:.06em;color:var(--text);display:flex;align-items:baseline;gap:10px">T<span style="color:var(--accent)">.</span>O<span style="color:var(--accent)">.</span>Q <small style="font-family:var(--mono);font-size:.58rem;font-weight:400;color:var(--muted);letter-spacing:.16em;text-transform:uppercase">Transforma o Quiebra</small></a>
       <button class="x1" data-burger type="button" aria-label="Abrir menú" style="display:none;align-items:center;justify-content:center;width:40px;height:36px;background:transparent;border:1px solid var(--border);border-radius:var(--r);color:var(--text);cursor:pointer;font-size:1rem;transition:border-color .2s ease">≡</button>
@@ -70,21 +70,8 @@
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-soft);padding:24px 0;overflow:hidden">
-        <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px;display:flex;align-items:center;gap:32px">
-          <span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap">Stack</span>
-          <div style="flex:1;perspective:1400px">
-          <div style="transform:rotateX(9deg);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)">
-            <div data-tech style="display:flex;gap:44px;width:max-content;animation:toqMarquee 34s linear infinite;will-change:transform">
-              <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span><span>Git</span>
-              <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span><span>Git</span>
-            </div>
-          </div>
-          </div>
-        </div>
-      </section>
 
-    <section id="quienes-somos" data-sec style="padding:122px 0 130px;position:relative">
+    <section id="quienes-somos" data-sec data-scheme="light" style="padding:122px 0 130px;position:relative">
       <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px">
         <div style="max-width:640px;margin-bottom:52px">
           <div data-reveal style="width:1px;height:50px;background:linear-gradient(180deg,var(--accent),transparent);margin-bottom:24px;transform-origin:50% 0;opacity:0;transform:scaleY(0);transition:opacity .5s var(--eo),transform .85s var(--eo)"></div>
@@ -159,7 +146,7 @@
       </div>
     </section>
 
-    <section id="portafolio" data-sec style="padding:126px 0">
+    <section id="portafolio" data-sec data-scheme="light" style="padding:126px 0">
       <div style="max-width:var(--maxw);margin:0 auto;padding:0 26px">
         <div style="max-width:640px;margin-bottom:44px">
           <h2 data-reveal style="font-size:clamp(1.9rem,4.4vw,3.05rem);font-weight:600;letter-spacing:-.038em;line-height:1.05;margin-bottom:18px;opacity:0;transform:translateY(24px);transition:opacity .8s var(--eo),transform .8s var(--eo)">Nuestros productos</h2>
