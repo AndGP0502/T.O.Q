@@ -32,7 +32,7 @@
       logo: "assets/img/productos/gym/gym-system-logo.png"
     },
     "portales-web": {
-      nombre: "Portales Web",
+      nombre: "Portales de servicios en línea",
       desc: "Tienda digital completa con catálogo, panel de administración y pagos",
       total: "Previa cotización",
       nota: "Según proyecto",
