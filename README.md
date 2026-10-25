@@ -40,7 +40,7 @@ Cualquier hosting estático sirve la carpeta tal cual:
 - El formulario de contacto simula el envío. El punto de integración está marcado con `TODO backend` en `js/main.js`.
 - `js/checkout.js` define el catálogo en la constante `CATALOGO` (slug → nombre, descripción, total, nota, logo). Los slugs vigentes son `obtenya`, `medicore-clinicas`, `gym-system`, `portales-web` y `software-medida`.
 - El botón "Confirmar compra" registra la solicitud y deriva el cierre a WhatsApp. Los puntos de integración de Stripe, PayPal y Payphone están marcados con `TODO` en `js/checkout.js`.
-- Los textos legales incluyen dos marcadores por definir: el país de constitución en Términos §10 y la revisión legal local.
+- Los textos legales indican la «República del Ecuador» como legislación aplicable (Términos §10). Queda pendiente la revisión legal local.
 - Falta el logo propio de ObtenYA: `assets/img/productos/obtenya/obtenya-logo.png` es una copia temporal del anterior.
 
 ## Movimiento
