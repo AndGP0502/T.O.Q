@@ -6,7 +6,7 @@ Landing estática. Sin build, sin Node, sin dependencias.
 
 ```
 index.html                Landing principal
-tienda.html               Catálogo: insignia ObtenYA + 4 productos
+tienda.html               Catálogo: insignia ObtenYA + 5 productos
 checkout.html             Resumen sticky, métodos de pago y confirmación
 sobre-nosotros.html       Manifiesto, el nombre y fundadores
 mision-vision.html        Misión, visión y valores
